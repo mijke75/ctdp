@@ -1,0 +1,20 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+@import url("./root.css");
+
+@import url("./menu.css");
+@import url("./phase.css");
+@import url("./tabs.css");
+@import url("./modal.css");
+@import url("./fabicon.css");
+
+* {
+    outline: none;
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Poppins;
+    overflow-x: hidden;
+}

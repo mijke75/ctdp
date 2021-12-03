@@ -1,0 +1,249 @@
+<html lang="en">
+    <head>
+        <link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+        <link href="css/style.css" rel="stylesheet">
+        <script type="module" src="js/script.js"></script>
+    </head>
+
+    <body>
+        <header>
+            <nav role='navigation'>
+                <div id="menuToggle">
+                    <input id="menuToggleCheckbox" type="checkbox" />
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <ul id="menu">
+                        <li onclick="app.aboutCTDP()">About CT Design Process</li>
+                        <li onclick="app.aboutThisTool()">About This Tool</li>
+                        <li onclick="app.aboutDF()">About DOT Framework</li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+    
+
+
+        <main class="phase-container">
+            <div class="separator"></div>
+            <div class="stage i"><div class="letter">i</div>idea</div>
+            <div class="stage c"><div class="letter">c</div>concept</div>
+            <div class="stage d"><div class="letter">d</div>design</div>
+            <div class="stage p"><div class="letter">p</div>product</div>
+
+            <div class="phase-wrapper"> 
+                <div class="legenda">
+                    <span>abstract</span><span>concrete</span>
+                    <footer>
+                    </footer>
+                </div>
+                <section id="trigger" class="phase small trigger" data-title="trigger">
+                    <header>
+                        <h2><span>t</span>rigger</h2>
+                        <div class="itemCount" value="0">0</div>
+                        <div class="addItem">+</div>
+                    </header>
+                    <footer>
+                        <div class="phase-action">Dream</div>
+                    </footer>
+                </section>
+
+                <section id="ideation" class="phase ideation" data-title="ideation">
+                    <header>
+                        <h2><span>i</span>deation</h2>
+                        <div class="itemCount" value="0">0</div>
+                        <div class="addItem">+</div>
+                    </header>
+                    <footer>
+                        <div class="phase-action">Explore</div>
+                        <div class="phase-action">Experiment</div>
+                    </footer>
+                </section>
+
+                <section id="design" class="phase design" data-title="specification &amp; design">
+                    <header>
+                        <h2><span>s</span>pecification <span>&amp;</span> <span>d</span>esign</h2>
+                        <div class="itemCount" value="0">0</div>
+                        <div class="addItem">+</div>
+                    </header>
+                    <footer>
+                        <div class="phase-action">Know</div>
+                        <div class="phase-action">Iterate</div>
+                    </footer>
+                </section>
+
+                <section id="realisation" class="phase realisation" data-title="realisation">
+                    <header>
+                        <h2><span>r</span>ealisation</h2>
+                        <div class="itemCount" value="0">0</div>
+                        <div class="addItem">+</div>
+                    </header>
+                    <footer>
+                        <div class="phase-action">Build</div>
+                        <div class="phase-action">Integrate</div>
+                    </footer>
+                </section>
+
+                <section id="evaluation" class="phase small evaluation" data-title="evaluation">
+                    <header>
+                        <h2><span>e</span>valuation</h2>
+                        <div class="itemCount" value="0">0</div>
+                        <div class="addItem">+</div>
+                    </header>
+                    <footer>
+                        <div class="phase-action">Present</div>
+                        <div class="phase-action">Test</div>
+                    </footer>
+                </section>
+            </div>
+        </main>
+
+
+
+        <div class="fabIcon">
+            <input type="checkbox" id="fabIconCheckbox" class="check">      
+            <label for="fabIconCheckbox" class="fabIconLabel"><i class="fas fa-cog"></i></label>
+            <div class="fabDelete"><i class="far fa-trash" onclick="app.clearStorage()"></i></div>
+            <div class="fabLoad"><i class="far fa-folder-open" onclick="app.loadDesignProcess()"></i><input id="fabLoadDP" type="file"></div>
+            <div class="fabSave"><i class="far fa-save" onclick="app.saveDesignProcess()"></i><a id="fabSaveDP"></a></div>
+        </div>
+        
+
+
+        <div id="modal">
+            <div class="modal-dialog">
+                <h3 class="dialog-title"></h3>
+
+                <div class="tab-container">
+                    <input type="radio" id="tab-1" class="tab" name="show" checked/>
+                    <label for="tab-1">General</label>
+                    <input type="radio" id="tab-2" class="tab" name="show" />
+                    <label for="tab-2">Research</label>
+
+                    <div class="tab-wrapper">
+                        <div class="tab-content">
+
+                            <div class="form-group">
+                                <input name="title" id="title" type="text" maxlength="30" placeholder=" ">
+                                <label for="title">Title</label>
+                            </div>
+                            <div class="form-group flex">
+                                <textarea name="description" id="description" placeholder=" "></textarea>
+                                <label for="description">Description</label>
+                            </div>
+
+                        </div>
+                        <div class="tab-content">
+
+                            <div class="form-group">
+                                <input name="research-question" id="research-question" type="text" placeholder=" ">
+                                <label for="research-question">Research question</label>
+                            </div>
+                            <div class="form-group">
+                                <select name="research-strategy" id="research-strategy" data-value="">
+                                    <option selected value=""></option>
+                                </select>
+                                <label for="research-strategy">Research strategy</label>
+                                <a class="information" target="_blank"><i class="fas fa-info-circle"></i></a>
+                            </div>
+                            <div class="form-group">
+                                <select name="research-method" id="research-method" data-value="">
+                                    <option selected value=""></option>
+                                </select>
+                                <label for="research-method">Research method</label>
+                                <a class="information" target="_blank"><i class="fas fa-info-circle"></i></a>
+                            </div>
+                            <div class="form-group">
+                                <textarea name="research-conclusions" id="research-conclusions" rows="4" placeholder=" "></textarea>
+                                <label for="research-conclusions">Research conclusions</label>
+                            </div>
+                            <div class="form-group">
+                                <input name="research-results" id="research-results" type="text" placeholder=" ">
+                                <label for="research-results">Link to result/report</label>
+                            </div>
+
+                        </div>
+                    </div>
+                  </div>
+
+                <input name="item-id" id="item-id" type="hidden">
+                <button class="dialog-button" id="dialog-remove">remove</button>
+                <button class="dialog-button" id="dialog-cancel">cancel</button>
+                <button class="dialog-button" id="dialog-submit">save</button>
+            </div>
+            <div class="modal-overlay"></div>
+        </div>
+
+
+
+        <div id="modal-about">
+            <div class="modal-dialog">
+                <div class="modal-close"><i class="far fa-times-circle"></i></div>
+                <h3 class="dialog-title">Creative Technology Design Process</h3>
+
+                <div class="tab-container" data-tabs="3">
+                    <input type="radio" id="tab-01" class="tab" name="about-show" checked/>
+                    <label for="tab-01">Design Process</label>
+                    <input type="radio" id="tab-02" class="tab" name="about-show" />
+                    <label for="tab-02">Tool</label>
+                    <input type="radio" id="tab-03" class="tab" name="about-show" />
+                    <label for="tab-03">DOT Framework</label>
+
+                    <div class="tab-wrapper">
+                        <div class="tab-content">
+                            <h4>About the Creative Technology design process</h4>
+                            <p>The Creative Technology design process (CTDP) exists of five project phases; Trigger, Ideate, Specification & Design, Realisation, Evaluation. These phases are not necessarily executed in these order, but different iteration processes between different phases can be taken.</p>
+                            <p>Actions and research done within these phases can be either abstract (e.g. reading an article can be a trigger) or concrete (e.g. an assignment can be a trigger).</p>
+                            <p>Starting with an empty canvas the Creative Technologist can plan their actions and research for each phase. Depending on the outcome alterations can be necessarily and new actions and research can be added during the project.</p>
+                        </div>
+
+                        <div class="tab-content">
+                            <h4>How to create your design process</h4>
+                            <p>The target of this tool is to create an overview of your project approach for each phase. You can add your research as items on each phase as follows:</p>
+                            <ul>
+                                <li>Click on the phase to open the canvas;</li>
+                                <li>Click on the plus sign to add a new item;</li>
+                                <li>You can give each item a title, description and information about your research;</li>
+                                <li>Items can be edited or deleted by clicking on them;</li>
+                                <li>Items can be moved to your prefered location on the canvas.</li>
+                                <li>Items are transparent by default and colored when conclusions or results are given.</li>
+                            </ul>
+            
+                            <h4>How to save / load your design process</h4>
+                            <p>Your design process is stored on your local computer. You can create an export file to create a backup, open your design process on a different computer or send it to someone. You can export your work by clicking on the button in the right/bottom corner and choose 'save'.<br>
+                            To import a design process, use the 'open' option and select a [*.ctdp] file.</p>
+
+                            <h4>Questions or Remarks?</h4>
+                            <p>Please contact Mijke van der Zee (m.vanderzee@fontys.nl)</p>
+                        </div>
+
+                        <div class="tab-content">
+                            <h4>About the DOT Framework</h4>
+                            <p>At Fontys Applied University for ICT (Fontys ICT) we use the Design Oriented Triangulation framework to answer the practical research questions in ICT projects. The website 'ictresearchmethods.nl' explains the DOT framework and a set of practical research methods placed within the framework. For each project you identify the questions, select preferably multiple methods to search for answers (triangulation), report on the results found by using the methods and draw a final conclusion answering the question.</p>
+                            <h4>Research strategies</h4>
+                            <p>The research methods within the DOT Framework are divided into five different strategies:</p>
+                            <ul>
+                                <li>'Library' methods to explore what is already done and what guidelines and theories exist that could help you further your design, e.g. relevant design patterns, frameworks, libraries, tools;</li>
+                                <li>'Field' methods to explore the application context, e.g. engineer user requirements;</li>
+                                <li>'Workshop' methods to design and implement the product (prototype) based on the results of Field and Library methods;</li>
+                                <li>'Lab' methods to test what has been implemented;</li>
+                                <li>'Showroom' methods to validate the quality and value of the product.</li>
+                            </ul>
+                            <h4>Resources</h4>
+                            <ul>
+                                <li><a href="https://ictresearchmethods.nl/Main_Page" target="_blank">DOT Framework</a></li>
+                                <li><a href="https://www.cmdmethods.nl/more-info" target="_blank">CMD Methods</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-overlay"></div>
+        </div>
+
+    </body>
+</html>

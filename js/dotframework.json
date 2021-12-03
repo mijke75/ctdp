@@ -1,0 +1,249 @@
+{
+    "strategies": [
+        { 
+            "id": "Li",
+            "name": "Library", 
+            "link": "https://www.cmdmethods.nl/cards/library/",
+            "methods": [
+                {
+                    "id": "Li1", 
+                    "name": "Benchmark Creation",
+                    "link": "https://www.cmdmethods.nl/cards/library/benchmark-creation"
+                },
+                {
+                    "id": "Li2", 
+                    "name": "Best, Good and Bad Practices",
+                    "link": "https://www.cmdmethods.nl/cards/library/best-good-and-bad-practices"
+                },
+                {
+                    "id": "Li3", 
+                    "name": "Competitive Analysis",
+                    "link": "https://www.cmdmethods.nl/cards/library/competitive-analysis"
+                },
+                {
+                    "id": "Li4", 
+                    "name": "Design Pattern Search",
+                    "link": "https://www.cmdmethods.nl/cards/library/design-pattern-search"
+                },
+                {
+                    "id": "Li5", 
+                    "name": "Expert Interview",
+                    "link": "https://www.cmdmethods.nl/cards/library/expert-interview"
+                },
+                {
+                    "id": "Li6", 
+                    "name": "Literature Study",
+                    "link": "https://www.cmdmethods.nl/cards/library/literature-study"
+                },
+                {
+                    "id": "Li7", 
+                    "name": "Trend Analysis",
+                    "link": "https://www.cmdmethods.nl/cards/library/trend-analysis"
+                }
+            ]
+        },
+        { 
+            "id": "Fi",
+            "name": "Field", 
+            "link": "https://www.cmdmethods.nl/cards/field/",
+            "methods": [
+                {
+                    "id": "Fi1", 
+                    "name": "Bag Tour",
+                    "link": "https://www.cmdmethods.nl/cards/field/bag-tour"
+                },
+                {
+                    "id": "Fi2", 
+                    "name": "Card Sorting",
+                    "link": "https://www.cmdmethods.nl/cards/field/card-sorting"
+                },
+                {
+                    "id": "Fi3", 
+                    "name": "Context Mapping",
+                    "link": "https://www.cmdmethods.nl/cards/field/context-mapping"
+                },
+                {
+                    "id": "Fi4", 
+                    "name": "Cultural Probes",
+                    "link": "https://www.cmdmethods.nl/cards/field/cultural-probes"
+                },
+                {
+                    "id": "Fi5", 
+                    "name": "Day in the Life",
+                    "link": "https://www.cmdmethods.nl/cards/field/day-in-the-life"
+                },
+                {
+                    "id": "Fi6", 
+                    "name": "Diary Study",
+                    "link": "https://www.cmdmethods.nl/cards/field/diary-study"
+                },
+                {
+                    "id": "Fi7", 
+                    "name": "Field",
+                    "link": "https://www.cmdmethods.nl/cards/field/fly-on-the-wall"
+                },
+                {
+                    "id": "Fi8", 
+                    "name": "Focus Group",
+                    "link": "https://www.cmdmethods.nl/cards/field/focus-group"
+                },
+                {
+                    "id": "Fi9", 
+                    "name": "Interview",
+                    "link": "https://www.cmdmethods.nl/cards/field/interview"
+                },
+                {
+                    "id": "Fi10", 
+                    "name": "Participant Observation",
+                    "link": "https://www.cmdmethods.nl/cards/field/participant-observation"
+                },
+                {
+                    "id": "Fi11", 
+                    "name": "Survey",
+                    "link": "https://www.cmdmethods.nl/cards/field/survey"
+                }
+            ]
+        },
+        { 
+            "id": "Wo",
+            "name": "Workshop", 
+            "link": "https://www.cmdmethods.nl/cards/workshop/",
+            "methods": [
+                {
+                    "id": "Wo1", 
+                    "name": "Co-creation",
+                    "link": "https://www.cmdmethods.nl/cards/workshop/co-creation"
+                },
+                {
+                    "id": "Wo2", 
+                    "name": "Ideation",
+                    "link": "https://www.cmdmethods.nl/cards/workshop/ideation"
+                },
+                {
+                    "id": "Wo3", 
+                    "name": "Morphological Chart",
+                    "link": "https://www.cmdmethods.nl/cards/workshop/morphological-chart"
+                },
+                {
+                    "id": "Wo4", 
+                    "name": "Proof of Concept",
+                    "link": "https://www.cmdmethods.nl/cards/workshop/proof-of-concept"
+                },
+                {
+                    "id": "Wo5", 
+                    "name": "Prototyping",
+                    "link": "https://www.cmdmethods.nl/cards/workshop/prototyping"
+                },
+                {
+                    "id": "Wo6", 
+                    "name": "Scamper",
+                    "link": "https://www.cmdmethods.nl/cards/workshop/scamper"
+                },
+                {
+                    "id": "Wo7", 
+                    "name": "Sketching",
+                    "link": "https://www.cmdmethods.nl/cards/workshop/sketching"
+                },
+                {
+                    "id": "Wo8", 
+                    "name": "Storytelling",
+                    "link": "https://www.cmdmethods.nl/cards/workshop/storytelling"
+                },
+                {
+                    "id": "Wo9", 
+                    "name": "Tinkering",
+                    "link": "https://www.cmdmethods.nl/cards/workshop/tinkering"
+                }
+            ]
+        },
+        { 
+            "id": "La",
+            "name": "Lab", 
+            "link": "https://www.cmdmethods.nl/cards/lab/",
+            "methods": [
+                {
+                    "id": "La1", 
+                    "name": "A/B Testing",
+                    "link": "https://www.cmdmethods.nl/cards/lab/a-b-testing"
+                },
+                {
+                    "id": "La2", 
+                    "name": "Biometrics",
+                    "link": "https://www.cmdmethods.nl/cards/lab/biometrics"
+                },
+                {
+                    "id": "La3", 
+                    "name": "Field Trial",
+                    "link": "https://www.cmdmethods.nl/cards/lab/field-trial"
+                },
+                {
+                    "id": "La4", 
+                    "name": "Online Analytics",
+                    "link": "https://www.cmdmethods.nl/cards/lab/online-analytics"
+                },
+                {
+                    "id": "La5", 
+                    "name": "Thinking Aloud",
+                    "link": "https://www.cmdmethods.nl/cards/lab/thinking-aloud"
+                },
+                {
+                    "id": "La6", 
+                    "name": "Usability Testing",
+                    "link": "https://www.cmdmethods.nl/cards/lab/usability-testing"
+                },
+                {
+                    "id": "La7", 
+                    "name": "Wizard of Oz",
+                    "link": "https://www.cmdmethods.nl/cards/lab/wizard-of-oz"
+                }
+            ]
+        },
+        { 
+            "id": "Sh",
+            "name": "Showroom", 
+            "link": "https://www.cmdmethods.nl/cards/showroom/",
+            "methods": [
+                {
+                    "id": "Sh1", 
+                    "name": "Co-reflection",
+                    "link": "https://www.cmdmethods.nl/cards/showroom/co-reflection"
+                },
+                {
+                    "id": "Sh2", 
+                    "name": "Expo",
+                    "link": "https://www.cmdmethods.nl/cards/showroom/expo"
+                },
+                {
+                    "id": "Sh3", 
+                    "name": "Heuristic Evaluation",
+                    "link": "https://www.cmdmethods.nl/cards/showroom/heuristic-evaluation"
+                },
+                {
+                    "id": "Sh4", 
+                    "name": "Peer Review",
+                    "link": "https://www.cmdmethods.nl/cards/showroom/peer-review"
+                },
+                {
+                    "id": "Sh5", 
+                    "name": "Pitch",
+                    "link": "https://www.cmdmethods.nl/cards/showroom/pitch"
+                },
+                {
+                    "id": "Sh6", 
+                    "name": "Provocative Prototyping",
+                    "link": "https://www.cmdmethods.nl/cards/showroom/provocative-prototyping"
+                },
+                {
+                    "id": "Sh7", 
+                    "name": "(Product) Quality Review",
+                    "link": "https://www.cmdmethods.nl/cards/showroom/quality-review"
+                },
+                {
+                    "id": "Sh8", 
+                    "name": "USP (Unique Selling Points)",
+                    "link": "https://www.cmdmethods.nl/cards/showroom/usp"
+                }
+            ]
+        }
+    ]
+}

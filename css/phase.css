@@ -1,0 +1,269 @@
+.phase-container {
+    position: relative;
+    z-index: 1;
+}
+
+.phase-container::after {
+    content: ' ';
+    display: table;
+    clear: both;
+}
+
+.separator {
+    z-index: 99;
+    position: absolute;
+    top: 50%;
+    width: 100vw;
+    height: 12px;
+    background-image: linear-gradient(to right, transparent 33%, var(--white-50-opacity) 0%);
+    background-position: bottom;
+    background-size: 18px 2px;
+    background-repeat: repeat-x;
+}
+
+.phase-wrapper {
+    margin-left: -1px;
+    margin-right: -1px;
+}
+
+.phase, .legenda {
+    position: relative;
+    min-height: 100vh;
+    width: calc(24% - 15px);
+    float: left;
+    padding-top: 20px;
+    border-right: 1px solid var(--white);
+    border-left: 1px solid var(--white);
+    box-sizing: border-box;
+    transition: all 500ms ease;
+}
+
+.phase.small {
+    width: calc(14% - 15px);
+}
+
+.phase:before, .legenda::before {
+    content: "";
+    margin-left: -100%;
+}
+
+.phase:after, .legenda::after {
+    content: "";
+    margin-right: -100%;
+}
+
+.phase.state-collapsed {
+    width: 75px;
+}
+
+.phase header {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.phase h2 {
+    margin: 0;
+    padding: 0;
+    color: var(--white);
+    font-size: 22px;
+    line-height: 22px;
+    text-align: center;
+    text-transform: uppercase;
+    display: inline-block;
+}
+
+.phase.state-collapsed h2 {
+    font-size: 0;
+}
+
+.phase.state-collapsed h2 span {
+    font-size: 22px;
+}
+
+.phase .itemCount, .phase .addItem {
+    display: inline-block;
+    background: var(--red);
+    border: 2px solid var(--white);
+    border-radius: 50%;
+    padding-top: 12px;
+    margin: -24px 0 0 4px;
+    height: 25px;
+    width: 25px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 0;
+    vertical-align: super;
+    color: var(--white);
+}
+
+.phase .itemCount[value~="0"] { 
+    display: none; 
+}
+
+.phase .addItem {
+    vertical-align: baseline;
+    border-radius: 8px;
+    cursor: pointer;
+    display: none;
+}
+
+.phase.state-active {
+    width: calc(100% - 375px);
+}
+
+.phase.state-active .itemCount, 
+.phase.state-collapsed .itemCount {
+    display: none;
+}
+
+.phase.state-active .addItem {
+    display: inline-block;
+}
+
+.legenda { 
+    background-color: var(--legenda-bg);
+    width: 75px; 
+    writing-mode: tb-rl;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.legenda span {
+    height: 47vh;
+    box-sizing: border-box;
+    font-size: 18px; 
+    color: var(--legenda);
+    text-transform: lowercase;
+    transform: rotate(180deg);
+    text-align: center;
+}
+
+
+.trigger { background-color: var(--phase-trigger); }
+.ideation { background-color: var(--phase-ideation); }
+.design { background-color: var(--phase-design); }
+.realisation { background-color: var(--phase-realisation); }
+.evaluation { background-color: var(--phase-evaluation); }
+
+
+.stage {
+    position: absolute;
+    top: calc(50% - 25px);
+    font-size: 50px;
+    font-weight: bold;
+    color: var(--gray-20-opacity);
+    width: 250px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.stage {
+    z-index: 99;
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0s ease 0s, opacity 500ms;
+}
+
+.stage.hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s ease 500ms, opacity 500ms;
+}
+
+.stage .letter {
+    width: 60px;
+    margin: 0 auto;
+    line-height: 60px;
+    background-color: var(--white);
+    color: var(--blue);
+    border: 4px solid var(--blue);
+    border-radius: 60px;
+    box-sizing: content-box;
+}
+
+.stage.i { right: calc(86% - 185px); }
+.stage.c { right: calc(62% - 170px); }
+.stage.d { right: calc(38% - 155px); }
+.stage.p { right: calc(14% - 140px); }
+
+
+.phase .item {
+    display: none;
+    padding: 4px 6px;
+    height: 20px;
+    line-height: 20px;
+    cursor: grab;
+    color: var(--white);
+    border: 3px solid var(--white);
+    border-radius: .5em;
+    position: relative;
+}
+
+.phase .item.has-results {
+    background-color: var(--light-gray);
+    color: var(--dark-gray);
+    border: 3px solid var(--white);
+}
+
+.phase.state-active .item {
+    display: inline;
+}
+
+.phase .item.ui-draggable-dragging {
+    opacity: 0.5;
+}
+
+.phase .item .research-image {
+    margin-left: 8px;
+    height: 20px;
+    vertical-align: middle;
+}
+
+.phase footer, .legenda footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    z-index: 90;
+    margin: 0;
+    padding: 5px;
+    height: 46px;
+    display: flex;
+    justify-content: center;
+    background: var(--white-75-opacity);
+}
+
+#realisation footer {
+    width: calc(100% - 66px);
+}
+
+#evaluation footer {
+    width: calc(100% + 68px);
+    left: -68px;
+}
+
+footer .phase-action {
+    width: 100%;
+    display: inline-block;
+    font-size: 22px;
+    margin: 0 20px;
+    text-align: center;
+    text-transform: uppercase;
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0s ease 0s, opacity 500ms;
+}
+
+.phase.state-collapsed footer .phase-action {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s ease 500ms, opacity 500ms;
+}
+
+#trigger .phase-action { color: var(--phase-trigger); }
+#ideation .phase-action { color: var(--phase-ideation); }
+#design .phase-action { color: var(--phase-design); }
+#realisation .phase-action { color: var(--phase-realisation); }
+#evaluation .phase-action { color: var(--phase-evaluation); }

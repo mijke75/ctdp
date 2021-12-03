@@ -1,0 +1,27 @@
+:root {
+    --white: #ffffff; 
+    --white-50-opacity: rgba(255,255,255,0.5);
+    --white-75-opacity: rgba(255,255,255,0.75);
+    --white-90-opacity: rgba(255,255,255,0.90);
+    --gray-20-opacity: rgba(55,55,55,0.2);
+    --light-gray: #dfdfdf;
+    --lighter-gray: #efefef;
+    --dark-gray: #3f3f3f;
+    --red: #cc2311;
+    --blue: #3fa9f5;
+    --green: #00a99d;
+    --black: #000000;
+    --black-60-opacity: rgba(0, 0, 0, 0.6);
+
+    --legenda-bg: #ecef90;
+    --legenda: #bdbf73;
+
+    --phase-trigger: #d9e021;
+    --phase-ideation: #8cc63f;
+    --phase-design: #00a99d;
+    --phase-realisation: #c1272d;
+    --phase-evaluation: #f15a24;
+
+    --modal-bg: #fefefe;
+
+}

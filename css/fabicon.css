@@ -1,0 +1,64 @@
+#fabIconCheckbox {
+    display: none;
+}
+
+.fabIconLabel {
+    position: absolute;
+    bottom: 65px;
+    right: 25px;
+    z-index: 11;
+    z-index: 22;
+    transform: rotateZ(-45deg);
+    transition: transform .2s ease-in;
+}
+
+.fabIconLabel i {
+    font-size: 30px;
+    padding: 21px;
+    min-width: 70px;
+    color: var(--white);
+    text-align: center;
+    border-radius: 50%;
+    cursor: pointer;
+    background: var(--red);
+}
+
+.fabDelete, .fabLoad, .fabSave {
+    position: absolute;
+    bottom: 65px;
+    right: 35px;
+    z-index: 21;
+    transition: all .5s cubic-bezier(.76,.28,.49,.45);
+}
+
+.fabDelete i, .fabLoad i, .fabSave i {
+    font-size: 25px;
+    padding: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 55px;
+    text-align: center;
+    background-color: var(--red);
+    color: var(--white);
+}
+
+#fabLoadDP, #fabSaveDP {
+    display: none;
+}
+
+
+#fabIconCheckbox:checked+.fabIconLabel {
+    transform: rotateZ(-90deg);
+}
+
+#fabIconCheckbox:checked~.fabDelete {
+    transform: translateX(-80px);
+} 
+
+#fabIconCheckbox:checked~.fabLoad {
+    transform: translate(-60px,-61px);
+}
+
+#fabIconCheckbox:checked~.fabSave {
+    transform: translateY(-90px);
+}
