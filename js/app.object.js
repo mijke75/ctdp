@@ -20,7 +20,7 @@ export class App {
 
         // Load dotframework JSON with research strategies and methods (to be used in Modal)
         const self = this;
-        $.getJSON ('js/dotframework.json', function(dotframework) {
+        $.getJSON ('/js/dotframework.json', function(dotframework) {
             self.dotframework = dotframework;
         });
     }
@@ -70,14 +70,14 @@ export class App {
         this.closeFabIcon();
     }
 
-    saveDesignProcess() {
+    saveDesignProcess(extension = 'ctdp') {
         if (typeof localStorage.items == 'undefined') {
             alert('Nothing created yet, please make a design first.');
         }
         else {
             // Save the version number and valid is true to check with import
             let text = '{ "valid": "true", "version": "0.5", "items": ' + localStorage.items + ' }';
-            let filename = 'export-' + this.#today() + '.ctdp';
+            let filename = 'export-' + this.#today() + '.' + extension;
             this.#download(filename, text, this.options.fabSaveElement);
         }    
         this.closeFabIcon();

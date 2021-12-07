@@ -176,7 +176,7 @@
 .legenda { 
     background-color: var(--legenda-bg);
     width: 75px; 
-    writing-mode: tb-rl;
+    writing-mode: vertical-rl;
     display: flex;
     align-items: center;
     justify-content: center;
