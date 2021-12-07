@@ -4,6 +4,7 @@ window.app;
 
 // Define all HTML/CSS elements to prevent having HTML/CSS definitions in the Classes
 let options = {
+    versionElement: '.legenda footer',
     phaseElements: '.phase',
     stageElements: '.stage',
     itemElements: '.item',

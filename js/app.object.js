@@ -5,6 +5,8 @@ export class App {
     constructor(options = {}) {
         // Version number which will be exported when design is saved
         this.version = '0.5';
+        $(options.versionElement).html('v.' + this.version);
+
         this.root = this;
         this.options = options;
         this.phases = new Phases(this);
