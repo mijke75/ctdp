@@ -8,7 +8,11 @@ With this tool, students can create research plans based on the Creative Technol
 
 ### Installing
 
-Download of fork the project from Github. Make sure you have a web service refering to your root folder of your project.
+There's no need of installing this tool You can use it on https://i873914.hera.fhict.nl
+
+### Using a local copy
+
+If you want to use a local copy of this project, download of fork the project from Github. Make sure you have a web service refering to your root folder of your project.
 
 If you open your local website you should see the design tool with five colored panels named 'trigger', 'ideation', 'specification & design', 'realisation' and 'evaluation'.
 
@@ -33,4 +37,4 @@ We use [SemVer](http://semver.org/) for versioning.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details.
+This project is free to use as inspiration or learn from its code. It is not allowed to use this project or (part) of its code without reference to this repository. Neither is it allowed to use this project or parts of this code for commercial activities.
