@@ -167,18 +167,8 @@ export class App {
         }
     }    
 
-    aboutCTDP() {
-        this.#openModal(1);
-        this.closeMenu();
-    }
-
-    aboutThisTool() {
-        this.#openModal(2);
-        this.closeMenu();
-    }
-
-    aboutDF() {
-        this.#openModal(3);
+    about(tabIndex) {
+        this.#openModal(tabIndex);
         this.closeMenu();
     }
 
