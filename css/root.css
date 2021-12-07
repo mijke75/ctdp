@@ -16,11 +16,20 @@
     --legenda-bg: #ecef90;
     --legenda: #bdbf73;
 
-    --phase-trigger: #d9e021;
-    --phase-ideation: #8cc63f;
-    --phase-design: #00a99d;
-    --phase-realisation: #c1272d;
-    --phase-evaluation: #f15a24;
+    --phase-trigger: rgba(271, 224, 33, 1); /* #d9e021 */
+    --phase-trigger-50-opacity: rgba(271, 224, 33, 0.5);
+
+    --phase-ideation: rgba(140, 198, 63, 1); /* #8cc63f */
+    --phase-ideation-50-opacity: rgba(140, 198, 63, 0.5);
+
+    --phase-design: rgba(0, 169, 157, 1); /* #00a99d */
+    --phase-design-50-opacity: rgba(0, 169, 157, 0.5);
+
+    --phase-realisation: rgba(193, 39, 45, 1); /* #c1272d */
+    --phase-realisation-50-opacity: rgba(193, 39, 45, 0.5);
+
+    --phase-evaluation: rgba(241, 90, 36, 1); /* #f15a24 */
+    --phase-evaluation-50-opacity: rgba(241, 90, 36, 0.5);
 
     --modal-bg: #fefefe;
 

@@ -2,8 +2,11 @@ import { Phase } from './phase.object.js';
 
 export class Phases {
 
-    constructor() {
+    constructor(parent) {
+        this.parent = parent;
+        this.root = parent.root;
         this.list = [];
+        this.stateOptions = this.root.options.stateOptions;
     }
 
     addPhase(element) {
@@ -13,19 +16,19 @@ export class Phases {
     minimizeAll() {
         this.list.forEach(phase => {
             phase.phaseState = 'collapsed';
-            phase.phaseElement.addClass('state-collapsed');
-            phase.phaseElement.removeClass('state-active');
+            phase.phaseElement.addClass(this.stateOptions.collapsed);
+            phase.phaseElement.removeClass(this.stateOptions.active);
         });
-        app.hideStages();
+        this.root.hideStages();
     }
 
     resetAll() {
         this.list.forEach(phase => {
             phase.phaseState = 'closed';
-            phase.phaseElement.removeClass('state-collapsed');
-            phase.phaseElement.removeClass('state-active');
+            phase.phaseElement.removeClass(this.stateOptions.collapsed);
+            phase.phaseElement.removeClass(this.stateOptions.active);
         });
-        app.showStages();
+        this.root.showStages();
     }
 
 }

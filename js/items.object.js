@@ -14,10 +14,11 @@ export class Items {
     }
 
     constructor(parent) {
+        this.parent = parent;
+        this.root = parent.root;
         this.registeredEvents = {};
 
         this.list = [];
-        this.parent = parent;
     }
 
     loadItems() {
@@ -27,29 +28,34 @@ export class Items {
             if (!storageList.hasOwnProperty(id)) continue;
             let listitem = storageList[id];
             if (storageList[id].phase == this.parent.id) {
-                let item = new Item(storageList[id]);
-                item.render(this.parent);
+                let item = new Item(this, storageList[id]);
+                item.render();
                 this.list[item.id] = item;
             }
         };
         this.triggerEvent('loadItems');
     }
     
-    addItem() {
-        const item = new Item();
+    newItem() {
+        const item = new Item(this);
         item.phase = this.parent.id;
         const modal = new Modal(this.parent, item);
 
         modal.addEventListener('submit', (item) => {
             this.list[item.id] = JSON.stringify(item);
-            item.render(this.parent);
-            debugger;
-            this.triggerEvent('addItem', [true]);
+            item.render();
+            this.triggerEvent('newItem', [true]);
         });
+    }
+
+    addItem(item) {
+        this.list[item.id] = item;
+        this.triggerEvent('addItem', [true]);
     }
 
     removeItem(id) {
         delete this.list[id];
+        this.triggerEvent('removeItem', [true]);
     }
 
 }

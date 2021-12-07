@@ -3,8 +3,9 @@ import { Phases } from './phases.object.js';
 export class App {
 
     constructor(options = {}) {
+        this.root = this;
         this.options = options;
-        this.phases = new Phases();
+        this.phases = new Phases(this);
         this.stages = $(this.options.stageElements);
         this.fabIcon = $(this.options.fabIconToggle);
         this.menu = $(this.options.menuToggle);
@@ -120,7 +121,8 @@ export class App {
                 fr.readAsText(file);
                 fr.onload = function(data) {
                   localStorage.items = data.target.result;
-                  setTimeout(function(){window.location = window.location}, 300);
+                  this.phases = new Phases();
+                  this.initPhases();
                 }
                 this.closeFabIcon();
             });

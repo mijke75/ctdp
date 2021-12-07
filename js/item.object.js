@@ -1,8 +1,12 @@
 import { Modal } from './modal.object.js';
 
 export class Item {
+    #parent;
+    #root;
 
-    constructor(item) {
+    constructor(parent, item) {
+        this.#parent = parent;
+        this.#root = parent.root;
         this.position = {};
         if (typeof item != 'undefined') {
             this.id = item.id;
@@ -14,7 +18,12 @@ export class Item {
             this.researchMethod = item.researchMethod;
             this.researchConclusions = item.researchConclusions;
             this.researchResults = item.researchResults;
-            this.position = item.position;
+            if(typeof item.position == 'undefined') {
+                this.position = {top: 100, left: 100};
+            }
+            else {
+                this.position = item.position;
+            }
         }
         else {
             this.id = '';
@@ -26,8 +35,23 @@ export class Item {
             this.researchMethod = '';
             this.researchConclusions = '';
             this.researchResults = '';
-            this.position = {};
+            this.position = {top: 100, left: 100};
         }
+    }
+
+    // We use getter setter for parent and root, because we dont want the parent in the localStorage
+    //      (JSON.stringify will fail in items.object/newItem eventListener)
+    get parent() {
+        return this.#parent;
+    }
+    set parent(obj) {
+        this.#parent = obj;
+    }
+    get root() {
+        return this.#root;
+    }
+    set root(obj) {
+        this.#root = obj;
     }
 
     load(id) {
@@ -46,7 +70,7 @@ export class Item {
         this.position = item.position;
     }
 
-    render(phaseObj) {
+    render() {
         let hasResults = '';
         if (this.researchConclusions !='' || this.researchResults != '') {
             hasResults = 'has-results';
@@ -55,25 +79,21 @@ export class Item {
         if (this.researchStrategy !='') {
             imageElement = '<img class="research-image" src="images/dotframework' + this.researchStrategy + '.png">';
         }
-        let itemElement = $('<div class="item ' + hasResults + '" id="' + this.id + '" data-title="' + this.title + '">' + this.title + imageElement + '</div>');
+        let itemElement = $('<div class="item ' + hasResults + '" id="' + this.id + '" data-phase="' + this.phase + '" data-title="' + this.title + '">' + this.title + imageElement + '</div>');
         itemElement.draggable({
             scroll: false,
-            containment: 'parent',
-            stop: function (event, ui) {
-                this.position = ui.position;
-                let items = JSON.parse(localStorage.items || "{}");
-                items[this.id].position = this.position;
-                localStorage.items = JSON.stringify(items);
-            }
+            cursor: 'move',
+            revert: 'invalid',
+            item: this
         });
-        itemElement.on('click', (e) => { this.open(phaseObj); });
+        itemElement.on('click', (e) => { this.open(); });
         itemElement.css(this.position);
-        itemElement.appendTo(phaseObj.phaseElement);
+        itemElement.appendTo(this.#parent.parent.phaseElement);
     }
 
-    open(phaseObj) {
-        this.phase = phaseObj.id;
-        const modal = new Modal(phaseObj, this);
+    open() {
+        this.phase = this.#parent.parent.id;
+        const modal = new Modal(this.#parent.parent, this);
     }
 
     save() {
@@ -116,18 +136,19 @@ export class Item {
         return items[this.id];
     }
 
-    remove(phaseObj) {
+    remove() {
         const confirmed = confirm('Are you sure you want to remove this item?');
         if (confirmed) {
-            // Remove item
+            // Remove item from parent list
+            this.#parent.removeItem(this.id);
+
+            // remove item from storage
             let items = JSON.parse(localStorage.items || "{}");
             delete items[this.id];
-            $('#' + this.id).remove();
             localStorage.items = JSON.stringify(items);
 
-            phaseObj.count--;
-            phaseObj.setCounter();
-            phaseObj.itemList.removeItem(this.id);
+            // remove item from screen
+            $('#' + this.id).remove();
         }
         return confirmed;
     }

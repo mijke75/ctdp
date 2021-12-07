@@ -27,6 +27,7 @@
 }
 
 .phase, .legenda {
+    z-index: 1;
     position: relative;
     min-height: 100vh;
     width: calc(24% - 15px);
@@ -56,6 +57,56 @@
     width: 75px;
 }
 
+.phase.draggable-hover { 
+    z-index: -1; 
+}
+
+#trigger.phase.drop-over {
+    background: repeating-linear-gradient(
+        45deg,
+        var(--phase-trigger),
+        var(--phase-trigger) 10px,
+        var(--phase-trigger-50-opacity) 10px,
+        var(--phase-trigger-50-opacity) 20px
+    );
+}
+#ideation.phase.drop-over {
+    background: repeating-linear-gradient(
+        45deg,
+        var(--phase-ideation),
+        var(--phase-ideation) 10px,
+        var(--phase-ideation-50-opacity) 10px,
+        var(--phase-ideation-50-opacity) 20px
+    );
+}
+#design.phase.drop-over {
+    background: repeating-linear-gradient(
+        45deg,
+        var(--phase-design),
+        var(--phase-design) 10px,
+        var(--phase-design-50-opacity) 10px,
+        var(--phase-design-50-opacity) 20px
+    );
+}
+#realisation.phase.drop-over {
+    background: repeating-linear-gradient(
+        45deg,
+        var(--phase-realisation),
+        var(--phase-realisation) 10px,
+        var(--phase-realisation-50-opacity) 10px,
+        var(--phase-realisation-50-opacity) 20px
+    );
+}
+#evaluation.phase.drop-over {
+    background: repeating-linear-gradient(
+        45deg,
+        var(--phase-evaluation),
+        var(--phase-evaluation) 10px,
+        var(--phase-evaluation-50-opacity) 10px,
+        var(--phase-evaluation-50-opacity) 20px
+    );
+}
+
 .phase header {
     display: block;
     width: 100%;
@@ -81,7 +132,7 @@
     font-size: 22px;
 }
 
-.phase .itemCount, .phase .addItem {
+.phase .itemCount, .phase .newItem {
     display: inline-block;
     background: var(--red);
     border: 2px solid var(--white);
@@ -102,7 +153,7 @@
     display: none; 
 }
 
-.phase .addItem {
+.phase .newItem {
     vertical-align: baseline;
     border-radius: 8px;
     cursor: pointer;
@@ -118,7 +169,7 @@
     display: none;
 }
 
-.phase.state-active .addItem {
+.phase.state-active .newItem {
     display: inline-block;
 }
 
@@ -191,6 +242,7 @@
 
 
 .phase .item {
+    z-index: 2;
     display: none;
     padding: 4px 6px;
     height: 20px;
@@ -242,6 +294,17 @@
 #evaluation footer {
     width: calc(100% + 68px);
     left: -68px;
+}
+
+#realisation.state-collapsed footer,
+#realisation.state-active footer {
+        width: 100%;
+}
+
+#evaluation.state-collapsed footer, 
+#evaluation.state-active footer {
+        width: 100%;
+    left: 0;
 }
 
 footer .phase-action {
