@@ -192,6 +192,15 @@
     text-align: center;
 }
 
+.legenda footer {
+    width: 100%;
+    font-size: 16px;
+    line-height: 36px;
+    left: 0;
+    color: var(--legenda-bg);
+    writing-mode: horizontal-tb;
+}
+
 
 .trigger { background-color: var(--phase-trigger); }
 .ideation { background-color: var(--phase-ideation); }
