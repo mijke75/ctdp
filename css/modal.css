@@ -194,6 +194,14 @@
     opacity: 1;
 }
 
+#title + label::after {
+    content: ' (max 40 characters)';
+}
+
+#title:focus + label::after, 
+#title:not(:placeholder-shown) + label::after {
+    content: '';
+}
 
 #research-method + label::after {
     content: ' (select strategy first)';

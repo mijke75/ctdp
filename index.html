@@ -9,6 +9,7 @@
     </head>
 
     <body>
+        <!-- Header with navigation which is hidden by default -->
         <header>
             <nav role='navigation'>
                 <div id="menuToggle">
@@ -28,12 +29,14 @@
 
 
         <main class="phase-container">
+            <!-- Centered stage product positioned in between the phases -->
             <div class="separator"></div>
             <div class="stage i"><div class="letter">i</div>idea</div>
             <div class="stage c"><div class="letter">c</div>concept</div>
             <div class="stage d"><div class="letter">d</div>design</div>
             <div class="stage p"><div class="letter">p</div>product</div>
 
+            <!-- Colored phases which can be used to place items on -->
             <div class="phase-wrapper"> 
                 <div class="legenda">
                     <span>abstract</span><span>concrete</span>
@@ -103,6 +106,7 @@
 
 
 
+        <!-- FabIcon with three shortcut functionalities clear, save and load -->
         <div class="fabIcon">
             <input type="checkbox" id="fabIconCheckbox" class="check">      
             <label for="fabIconCheckbox" class="fabIconLabel"><i class="fas fa-cog"></i></label>
@@ -113,6 +117,7 @@
         
 
 
+        <!-- Modal used for creating and editing items -->
         <div id="modal">
             <div class="modal-dialog">
                 <h3 class="dialog-title"></h3>
@@ -127,7 +132,7 @@
                         <div class="tab-content">
 
                             <div class="form-group">
-                                <input name="title" id="title" type="text" maxlength="30" placeholder=" ">
+                                <input name="title" id="title" type="text" maxlength="40" placeholder=" ">
                                 <label for="title">Title</label>
                             </div>
                             <div class="form-group flex">
@@ -179,6 +184,7 @@
 
 
 
+        <!-- Modal with information around this tool, will be opened from the menubar -->
         <div id="modal-about">
             <div class="modal-dialog">
                 <div class="modal-close"><i class="far fa-times-circle"></i></div>

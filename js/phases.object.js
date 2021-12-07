@@ -3,8 +3,10 @@ import { Phase } from './phase.object.js';
 export class Phases {
 
     constructor(parent) {
+        // We always save the parent and the root class object so that we can find our way up if necessary
         this.parent = parent;
         this.root = parent.root;
+        
         this.list = [];
         this.stateOptions = this.root.options.stateOptions;
     }

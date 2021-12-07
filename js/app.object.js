@@ -3,6 +3,8 @@ import { Phases } from './phases.object.js';
 export class App {
 
     constructor(options = {}) {
+        // Version number which will be exported when design is saved
+        this.version = '0.5';
         this.root = this;
         this.options = options;
         this.phases = new Phases(this);
@@ -21,9 +23,7 @@ export class App {
         });
     }
 
-    /**
-     * Creates Phases object with a list of Phase objects for each phase element section in the HTML
-     */
+    // Creates Phases object with a list of Phase objects for each phase element section in the HTML
     initPhases() {
         const phaseElements = $(this.options.phaseElements);
         const self = this;
@@ -55,20 +55,26 @@ export class App {
 
     clearStorage() {
         if (confirm('Are you sure want to delete your design?')) {
-            localStorage.clear();
-            $(this.options.itemElements).remove();
-            $(this.options.itemCounter).attr('value', 0);
-            $(this.options.itemCounter).html(0);
-            this.closeFabIcon();
+            this.#clear();
         }
+    }
+
+    // Private function to clear the design
+    #clear() {
+        localStorage.clear();
+        $(this.options.itemElements).remove();
+        $(this.options.itemCounter).attr('value', 0);
+        $(this.options.itemCounter).html(0);
+        this.closeFabIcon();
     }
 
     saveDesignProcess() {
         if (typeof localStorage.items == 'undefined') {
-            alert('Nothing to save yet.');
+            alert('Nothing created yet, please make a design first.');
         }
         else {
-            let text = localStorage.items;
+            // Save the version number and valid is true to check with import
+            let text = '{ "valid": "true", "version": "0.5", "items": ' + localStorage.items + ' }';
             let filename = 'export-' + this.#today() + '.ctdp';
             this.#download(filename, text, this.options.fabSaveElement);
         }    
@@ -97,6 +103,7 @@ export class App {
         return returnValue;
     }
 
+    // Attach the created file to the hidden download and trigger this to download the file 
     #download = function(filename, text, el) {
         let element = document.getElementById(el);
         element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
@@ -106,25 +113,53 @@ export class App {
     }
 
     loadDesignProcess() {
+        let self = this;
         let allowed = false;
+        // Check if we have an empty design
         if (typeof localStorage.items == 'undefined') {
             allowed = true;
         }
         else {
-            allowed = confirm('Are you sure you want to load a design and loose your current work?');
+            // Check if the user wants to overwrite the current design
+            allowed = confirm('Are you sure you want to import a design and loose your current work?');
         }
         if (allowed) {
+            // Wait for a file being uploaded
             $(this.options.fabLoadElement).one('change', (e) => {
                 let file = e.currentTarget.files[0];
                 let fr = new FileReader();
-              
+
+                // Read the file
                 fr.readAsText(file);
                 fr.onload = function(data) {
-                  localStorage.items = data.target.result;
-                  this.phases = new Phases();
-                  this.initPhases();
+                    let fileContent = JSON.parse(data.target.result);
+
+                    // Check if this is a valid export file
+                    if(fileContent['valid'] == 'true') {
+                        let checkVersion = false;
+                        // If the application has the same version number as saved in the export file, we're good.
+                        if(fileContent['version'] == self.version) {
+                            checkVersion = true;
+                        }
+                        else {
+                            // We have a valid file, but made in a previous version, ask for permission
+                            checkVersion = confirm('The export file is made in another version(' + fileContent['version'] + ') then the current application version(' + self.version + '). Are you sure you want to import this file?');
+                        }
+                        if(checkVersion) {
+                            // Clear the current design
+                            self.#clear();
+                            // Save the items from the export file to the local storage
+                            localStorage.items = JSON.stringify(fileContent['items']);
+                            // reset the screen with the imported items
+                            self.phases = new Phases(self);
+                            self.initPhases();
+                        }
+                    }
+                    else {
+                        alert('Imported file is not valid, cannot import this file.');
+                    }
                 }
-                this.closeFabIcon();
+                self.closeFabIcon();
             });
             $(this.options.fabLoadElement).trigger('click');
         }

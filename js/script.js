@@ -1,6 +1,8 @@
 import { App } from './app.object.js';
 
 window.app;
+
+// Define all HTML/CSS elements to prevent having HTML/CSS definitions in the Classes
 let options = {
     phaseElements: '.phase',
     stageElements: '.stage',
@@ -44,6 +46,8 @@ let options = {
         hasLink: 'hasLink'
     }
 }
+
+// Create app object and initiate all phases 
 $(document).ready(function() {
     window.app = new App(options);
     window.app.initPhases();

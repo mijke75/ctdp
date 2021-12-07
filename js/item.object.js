@@ -5,9 +5,13 @@ export class Item {
     #root;
 
     constructor(parent, item) {
+        // We always save the parent and the root class object so that we can find our way up if necessary
         this.#parent = parent;
         this.#root = parent.root;
+
         this.position = {};
+
+        // If an Item is given in the constructor, load the properties of that Item in this class
         if (typeof item != 'undefined') {
             this.id = item.id;
             this.title = item.title;
@@ -25,6 +29,7 @@ export class Item {
                 this.position = item.position;
             }
         }
+        // If no Item is given, initialize the properties as empty.
         else {
             this.id = '';
             this.title = '';
@@ -35,12 +40,13 @@ export class Item {
             this.researchMethod = '';
             this.researchConclusions = '';
             this.researchResults = '';
+            // By default all Items are positioned at top 100 and left 100
             this.position = {top: 100, left: 100};
         }
     }
 
     // We use getter setter for parent and root, because we dont want the parent in the localStorage
-    //      (JSON.stringify will fail in items.object/newItem eventListener)
+    //      (JSON.stringify will fail in items.object.js/newItem eventListener)
     get parent() {
         return this.#parent;
     }
@@ -54,6 +60,7 @@ export class Item {
         this.#root = obj;
     }
 
+    // We can load an Item by its id directly from the local storage
     load(id) {
         let items = JSON.parse(localStorage.items || "{}");
         let item = items[id];
@@ -70,46 +77,58 @@ export class Item {
         this.position = item.position;
     }
 
+    // Render this element as an HTML element on the screen
     render() {
+        // Different styles are applied when an Item has research conclusions or results
         let hasResults = '';
         if (this.researchConclusions !='' || this.researchResults != '') {
             hasResults = 'has-results';
         }
+
+        // Ig this Item has a research strategy, show its matching image next to the title
         let imageElement = '';
         if (this.researchStrategy !='') {
             imageElement = '<img class="research-image" src="images/dotframework' + this.researchStrategy + '.png">';
         }
         let itemElement = $('<div class="item ' + hasResults + '" id="' + this.id + '" data-phase="' + this.phase + '" data-title="' + this.title + '">' + this.title + imageElement + '</div>');
+
+        // Make the Item HTML element draggable so we can move it to another position in this phase or move it to a different phase
         itemElement.draggable({
             scroll: false,
             cursor: 'move',
             revert: 'invalid',
             item: this
         });
+        // Always attach the click event after making it draggable, so it won't fire during dragging the Item
         itemElement.on('click', (e) => { this.open(); });
         itemElement.css(this.position);
+        // Write the created Item HTML element to its defined phase HTML element
         itemElement.appendTo(this.#parent.parent.phaseElement);
     }
 
+    // Open the Item into a modal, so we can edit it.
     open() {
         this.phase = this.#parent.parent.id;
         const modal = new Modal(this.#parent.parent, this);
     }
 
+    // Save or update the Item
     save() {
+        // New Items don't have an id yet, so we create one with a random number and today's date
         if (this.id == '') {
             this.id = Math.floor(Math.random() * 26) + Date.now();
             this.position = {top: 100, left: 100};
         }
         else {
-        let hasResults = '';
-        if (this.researchConclusions !='' || this.researchResults != '') {
-            $('#' + this.id).addClass('has-results');
-        }
-        else {
-            $('#' + this.id).removeClass('has-results');
-        }
-        let newTitle = this.title;
+            // If we update an existing Item, we need to update the HTML element as well
+            let hasResults = '';
+            if (this.researchConclusions !='' || this.researchResults != '') {
+                $('#' + this.id).addClass('has-results');
+            }
+            else {
+                $('#' + this.id).removeClass('has-results');
+            }
+            let newTitle = this.title;
             if (this.researchStrategy !='') {
                 newTitle = this.title + '<img class="research-image" src="images/dotframework' + this.researchStrategy + '.png">';
             }
@@ -118,6 +137,7 @@ export class Item {
             $('#' + this.id).data('title', this.title);
         }
 
+        // Next we have to save it in the local storage
         let items = JSON.parse(localStorage.items || "{}");
         items[this.id] = {
             id: this.id, 
