@@ -1,15 +1,17 @@
-import { App } from './app.object.js';
-
-window.app;
-
 // Define all HTML/CSS elements to prevent having HTML/CSS definitions in the Classes
-let options = {
+export default
+{
+    legenda: '.legenda',
     versionElement: '.legenda footer',
     phaseElements: '.phase',
     stageElements: '.stage',
+    stageWrapper: '.stage-wrapper',
+    stageIcon: 'icon',
     itemElements: '.item',
     itemCounter: '.itemCount',
     newItem: '.newItem',
+    phaseWrapper: '.phase-wrapper',
+    phaseAction: 'phase-action',
     fabIconToggle: '#fabIconCheckbox',
     fabSaveElement: 'fabSaveDP',
     fabLoadElement: '#fabLoadDP',
@@ -43,13 +45,6 @@ let options = {
         researchMethodOption: 'method-option',
         researchConclusions: '#research-conclusions',
         researchResults: '#research-results',
-        researchInformation: '.information',
-        hasLink: 'hasLink'
+        researchInformation: '.information'
     }
 }
-
-// Create app object and initiate all phases 
-$(document).ready(function() {
-    window.app = new App(options);
-    window.app.initPhases();
-});

@@ -1,0 +1,155 @@
+
+#start header {
+    position: absolute;
+    width: 100vw;
+    padding: 40px 25px;
+    top: 0;
+    left: 0;            
+    background: #cc2311;
+    color: rgba(0, 0, 0, 0.4);
+    font-size: 32px;
+    text-transform: uppercase;
+    text-align: center;
+    box-shadow: 0 8px 4px -5px rgba(0,0,0,0.35);
+}
+
+#start main {
+    margin: 180px 60px 30px;
+
+}
+
+#start .description {
+    margin: 0 auto;
+    font-size: 18px;
+    color: rgba(0, 0, 0, 0.5);
+    margin-bottom: 32px;
+    text-align: justify;
+}
+
+#start .cards {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 270px);
+    justify-content: space-between;
+    grid-gap: 32px;
+}
+
+#start .card-ctdp .card-img,
+#start .card-ctdp .card-img-hover {
+    background-image: url('../images/methodology/ctdp.png');
+}
+
+#start .card-dd .card-img,
+#start .card-dd .card-img-hover {
+    background-image: url('../images/methodology/dd.png');
+}
+
+#start .card-dt .card-img,
+#start .card-dt .card-img-hover {
+    background-image: url('../images/methodology/dt.png');
+}
+
+#start .card-hcd .card-img,
+#start .card-hcd .card-img-hover {
+    background-image: url('../images/methodology/hcd.png');
+}
+
+#start .card-edp .card-img,
+#start .card-edp .card-img-hover {
+    background-image: url('../images/methodology/edp.png');
+}
+
+#start .card {
+    margin: 32px 0;
+    transition: all .4s cubic-bezier(0.175, 0.885, 0, 1);
+    background-color: #fff;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0px 13px 10px -7px rgba(0, 0, 0,0.1);
+    -webkit-font-smoothing: antialiased;
+
+}
+
+#start .card:hover {
+    box-shadow: 0px 30px 18px -8px rgba(0, 0, 0,0.15);
+    transform: scale(1.1, 1.1);
+}
+
+#start .card-info-hover {
+    position: absolute;
+    padding: 2px 2px 16px 16px;
+    width: 100%;
+    opacity: 0;
+    top: 8px;
+    right: 8px;
+    z-index: 9;
+}
+
+#start .card:hover .card-info-hover:not([data-value='0']) {
+    opacity: 1;
+}
+
+#start .card-top-info {
+    float: right;
+}
+
+#start .card-item-count {
+    font-size: 12px;
+    color: #AD7D52;
+    vertical-align: middle;
+    margin-left: 5px;
+}
+
+#start .card-img {
+    z-index: 10;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 225px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+#start .card-info {
+    z-index: 2;
+    background-color: #fff;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    padding: 8px 24px 24px 24px;
+    height: 275px;
+}
+
+#start .card-title {
+    position: relative;
+    text-transform: uppercase;
+    font-size: 13px;
+    text-rendering: optimizeSpeed;
+    letter-spacing: 2px;
+    font-weight: 500;
+    color: #868686;
+}
+
+#start .card-description {
+    margin-top: 5px;
+    margin-bottom: 30px;
+    font-size: 12px;
+}
+
+#start .card-button {
+    position: absolute;
+    bottom: 26px;
+    width: calc(100% - 48px);
+    height: 38px;
+    border: none;
+    background-color: #00a99d;
+    font-size: 12px;
+    color: white;
+    padding: 10px 32px;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+}

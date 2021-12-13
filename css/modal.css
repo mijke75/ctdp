@@ -111,6 +111,12 @@
     overflow: hidden;
 }
 
+.form-group input.invalid,
+.form-group textarea.invalid,
+.form-group select.invalid {
+    border-bottom: solid 2px var(--red);
+}
+
 .form-group textarea {
     height: 80px;
     max-height: 120px;
@@ -183,6 +189,12 @@
     border-bottom: solid 3px var(--light-gray);
 }
 
+.form-group input.invalid:focus,
+.form-group textarea.invalid:focus {
+    border-bottom: solid 3px var(--red);
+}
+
+
 .form-group input:focus + label, 
 .form-group input:not(:placeholder-shown) + label,
 .form-group textarea:focus + label,
@@ -221,8 +233,8 @@
     cursor: default;
 }
 
-#research-strategy ~ .information.haslink, 
-#research-method ~ .information.haslink {
+#research-strategy:not([data-value=""]) ~ .information, 
+#research-method:not([data-value=""]) ~ .information {
     color: var(--red);
     cursor: pointer;
 }

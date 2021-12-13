@@ -1,0 +1,5 @@
+#Don't push these files into GIT
+_backup/
+.vscode/
+*.DS_Store
+version-0.5

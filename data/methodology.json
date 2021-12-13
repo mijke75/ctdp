@@ -1,0 +1,323 @@
+{
+    "methodologies": [
+        { 
+            "id": "ctdp",
+            "name": "Creative Technology Design Process",
+            "extension": ".ctdp",
+            "legenda": ["abstract", "concrete"],
+            "stages": [
+                {
+                    "id": "i", 
+                    "icon": "i",
+                    "name": "Idea"
+                },
+                {
+                    "id": "c", 
+                    "icon": "c",
+                    "name": "Concept"
+                },
+                {
+                    "id": "d", 
+                    "icon": "p",
+                    "name": "Design"
+                },
+                {
+                    "id": "p", 
+                    "icon": "p",
+                    "name": "Product"
+                }
+            ],
+            "phases": [
+                {
+                    "id": "trigger", 
+                    "title": "Trigger",
+                    "footer": ["Dream"],
+                    "small": true
+                },
+                {
+                    "id": "ideation", 
+                    "title": "Ideation",
+                    "footer": ["Explore", "Experiment"],
+                    "small": false
+                },
+                {
+                    "id": "design", 
+                    "title": "Specification & Design",
+                    "footer": ["Know", "Iterate"],
+                    "small": false
+                },
+                {
+                    "id": "realisation", 
+                    "title": "Realisation",
+                    "footer": ["Build", "Integrate"],
+                    "small": false
+                },
+                {
+                    "id": "evaluation", 
+                    "title": "Evaluation",
+                    "footer": ["Present", "Test"],
+                    "small": true
+                }
+            ],
+            "about": "<p>The Creative Technology design process (CTDP) exists of five project phases; Trigger, Ideate, Specification & Design, Realisation, Evaluation. These phases are not necessarily executed in these order, but different iteration processes between different phases can be taken.</p><p>Actions and research done within these phases can be either abstract (e.g. reading an article can be a trigger) or concrete (e.g. an assignment can be a trigger).</p><p>Starting with an empty canvas the Creative Technologist can plan their actions and research for each phase. Depending on the outcome alterations can be necessarily and new actions and research can be added during the project.</p>"
+        },
+        {
+            "id": "dd",
+            "name": "Double Diamond", 
+            "extension": ".dd",
+            "legenda": [],
+            "stages": [
+                {
+                    "id": "re", 
+                    "icon": "<",
+                    "name": "Research"
+                },
+                {
+                    "id": "in", 
+                    "icon": ">",
+                    "name": "Insights"
+                },
+                {
+                    "id": "id", 
+                    "icon": "<",
+                    "name": "Ideation"
+                },
+                {
+                    "id": "pr", 
+                    "icon": ">",
+                    "name": "Prototypes"
+                }
+            ],
+            "phases": [
+                {
+                    "id": "discover", 
+                    "title": "Discover",
+                    "footer": ["User Centered Empathetic"],
+                    "small": false
+                },
+                {
+                    "id": "define", 
+                    "title": "Define",
+                    "footer": ["Needs/Values Touchpoints"],
+                    "small": false
+                },
+                {
+                    "id": "develop", 
+                    "title": "Develop",
+                    "footer": ["Brainstorm Solutions"],
+                    "small": false
+                },
+                {
+                    "id": "deliver", 
+                    "title": "Deliver",
+                    "footer": ["Specific Solution"],
+                    "small": false
+                }
+            ],
+            "about": "<p>The Double Diamond is a structured design approach to tackle challenges in four phases. The purpose of the model is to help creatives follow a process that guides them through the steps of going from concept to finished product. The four phases of the Double Diamond are:</p><ul><li>Discover /Research— insight into the problem (diverging)</li><li>Define/Synthesis — the area to focus upon (converging)</li><li>Develop/ Ideation— potential solutions (diverging)</li><li>Deliver /Implementation— solutions that work (converging)</li></ul><p>The four phases of the Double Diamond may be simplified and merged into two main stages of the process.</p><ul><li><i>Stage 1 — Doing the right thing (Diamond 1 — Discover and Define)</i><br>Whatever you do, you ought to look for the right problem to solve or the right question to ask before you try to do so. This is all about what you do.</li><li><i>Stage 2 — Doing things right (Diamond 2 — Develop and Deliver)</i><br>Once you have found the right question to answer or the right problem to solve, you want to make sure that you do this the right way. This is all about how you do it.</li></ul>"
+        },
+        { 
+            "id": "dt",
+            "name": "Design Thinking",
+            "extension": ".dt",
+            "legenda": [],
+            "stages": [
+                {
+                    "id": "e", 
+                    "icon": "<i class='fas fa-heart'></i>",
+                    "name": ""
+                },
+                {
+                    "id": "d", 
+                    "icon": "<i class='fas fa-search'></i>",
+                    "name": ""
+                },
+                {
+                    "id": "i", 
+                    "icon": "<i class='fas fa-lightbulb'></i>",
+                    "name": ""
+                },
+                {
+                    "id": "p", 
+                    "icon": "<i class='fas fa-pencil-ruler'></i>",
+                    "name": ""
+                },
+                {
+                    "id": "t", 
+                    "icon": "<i class='fas fa-tasks'></i>",
+                    "name": ""
+                }
+            ],
+            "phases": [
+                {
+                    "id": "empathize", 
+                    "title": "Empathize",
+                    "footer": ["What is the problem?"],
+                    "small": false
+                },
+                {
+                    "id": "define", 
+                    "title": "Define",
+                    "footer": ["Why is it important?"],
+                    "small": false
+                },
+                {
+                    "id": "ideate", 
+                    "title": "Ideate",
+                    "footer": ["Why is it important?"],
+                    "small": false
+                },
+                {
+                    "id": "prototype", 
+                    "title": "Prototype",
+                    "footer": ["How do we create it?"],
+                    "small": false
+                },
+                {
+                    "id": "test", 
+                    "title": "Test",
+                    "footer": ["Does it work?"],
+                    "small": false
+                }
+            ],
+            "about": "<p>Design Thinking is an iterative process in which we seek to understand the user, challenge assumptions, and redefine problems in an attempt to identify alternative strategies and solutions that might not be instantly apparent with our initial level of understanding. At the same time, Design Thinking provides a solution-based approach to solving problems. It is a way of thinking and working as well as a collection of hands-on methods.</p><p>Design Thinking revolves around a deep interest in developing an understanding of the people for whom we’re designing the products or services. It helps us observe and develop empathy with the target user. Design Thinking helps us in the process of questioning: questioning the problem, questioning the assumptions, and questioning the implications. Design Thinking is extremely useful in tackling problems that are ill-defined or unknown, by re-framing the problem in human-centric ways, creating many ideas in brainstorming sessions, and adopting a hands-on approach in prototyping and testing. Design Thinking also involves ongoing experimentation: sketching, prototyping, testing, and trying out concepts and ideas.</p><p>The five phases of Design Thinking are as follows:</p><ul><li>Empathise – with your users</li><li>Define – your users’ needs, their problem, and your insights</li><li>Ideate – by challenging assumptions and creating ideas for innovative solutions</li><li>Prototype – to start creating solutions</li><li>Test – solutions</li></ul>"
+        },
+        { 
+            "id": "hcd",
+            "name": "Human Centered Design",
+            "extension": ".hcd",
+            "legenda": [],
+            "stages": [
+                {
+                    "id": "d1", 
+                    "icon": "<",
+                    "name": "Diverge"
+                },
+                {
+                    "id": "c1", 
+                    "icon": ">",
+                    "name": "Converge"
+                },
+                {
+                    "id": "d2", 
+                    "icon": "<",
+                    "name": "Diverge"
+                },
+                {
+                    "id": "c2", 
+                    "icon": ">",
+                    "name": "Converge"
+                }
+            ],
+            "phases": [
+                {
+                    "id": "inspiration", 
+                    "title": "Inspiration",
+                    "footer": ["I have a design challenge"],
+                    "small": false
+                },
+                {
+                    "id": "ideation", 
+                    "title": "Ideation",
+                    "footer": ["I have an opportunity for design"],
+                    "small": false
+                },
+                {
+                    "id": "implementation", 
+                    "title": "Implementation",
+                    "footer": ["I have an innovative solution"],
+                    "small": false
+                }
+            ],
+            "about": "<p>Human-centered design is a creative approach to problem solving and the backbone of our work at IDEO.org. It’s a process that starts with the people you’re designing for and ends with new solutions that are tailor made to suit their needs. Human-centered design is all about building a deep empathy with the people you’re designing for; generating tons of ideas; building a bunch of prototypes; sharing what you’ve made with the people you’re designing for; and eventually putting your innovative new solution out in the world.</p><p>Human-centered design consists of three phases. In the Inspiration Phase you’ll learn directly from the people you’re designing for as you immerse yourself in their lives and come to deeply understand their needs. In the Ideation Phase you’ll make sense of what you learned, identify opportunities for design, and prototype possible solutions. And in the Implementation Phase you’ll bring your solution to life, and eventually, to market. And you’ll know that your solution will be a success because you’ve kept the very people you’re looking to serve at the heart of the process.</p>"
+        },
+        { 
+            "id": "edp",
+            "name": "Engineering Design Process",
+            "extension": ".edp",
+            "legenda": [""],
+            "stages": [
+                {
+                    "id": "as", 
+                    "icon": "<i class='fas fa-question-circle'></i>",
+                    "name": "Ask"
+                },
+                {
+                    "id": "re", 
+                    "icon": "<i class='fas fa-search'></i>",
+                    "name": "Research"
+                },
+                {
+                    "id": "ia", 
+                    "icon": "<i class='fas fa-cloud'></i>",
+                    "name": "Imagine"
+                },
+                {
+                    "id": "pl", 
+                    "icon": "<i class='fas fa-clipboard-list'></i>",
+                    "name": "Plan"
+                },
+                {
+                    "id": "cr", 
+                    "icon": "<i class='fas fa-pencil-ruler'></i>",
+                    "name": "Create"
+                },
+                {
+                    "id": "te", 
+                    "icon": "<i class='fas fa-tasks'></i>",
+                    "name": "Test"
+                },
+                {
+                    "id": "ip", 
+                    "icon": "<i class='fas fa-plus-circle'></i>",
+                    "name": "Improve"
+                }
+            ],
+            "phases": [
+                {
+                    "id": "ask", 
+                    "title": "Ask",
+                    "footer": ["to identify the need"],
+                    "small": true
+                },
+                {
+                    "id": "research", 
+                    "title": "Research",
+                    "footer": ["the problem"],
+                    "small": false
+                },
+                {
+                    "id": "imagine", 
+                    "title": "Imagine",
+                    "footer": ["possible solutions"],
+                    "small": false
+                },
+                {
+                    "id": "plan", 
+                    "title": "Plan",
+                    "footer": ["by selecting a promising solution"],
+                    "small": false
+                },
+                {
+                    "id": "create", 
+                    "title": "Create",
+                    "footer": ["a prototype"],
+                    "small": true
+                },
+                {
+                    "id": "test", 
+                    "title": "Test",
+                    "footer": ["and evaluate the prototype"],
+                    "small": false
+                },
+                {
+                    "id": "improve", 
+                    "title": "Improve",
+                    "footer": ["and redesign as needed"],
+                    "small": true
+                }
+            ],
+            "about": "<p>The engineering design process is a series of steps that guides engineering teams as we solve problems. The design process is iterative, meaning that we repeat the steps as many times as needed, making improvements along the way as we learn from failure and uncover new design possibilities to arrive at great solutions.</p><p>Engineers ask critical questions about what they want to create, whether it be a skyscraper, amusement park ride, bicycle or smartphone. These questions include: What is the problem to solve? What do we want to design? Who is it for? What do we want to accomplish? What are the project requirements? What are the limitations? What is our goal?</p><p>Research  includes talking to people from many different backgrounds and specialties to assist with researching what products or solutions already exist, or what technologies might be adaptable to your needs.</p><p>You work with a team to brainstorm ideas and develop as many solutions as possible. This is the time to encourage wild ideas and defer judgment! Build on the ideas of others! Stay focused on topic, and have one conversation at a time!</p><p>Making a plan is for many teams the hardest step! Revisit the needs, constraints and research from the earlier steps, compare your best ideas, select one solution and make a plan to move forward with it.</p><p>Building a prototype makes your ideas real! These early versions of the design solution help your team verify whether the design meets the original challenge objectives. Push yourself for creativity, imagination and excellence in design.</p><p>Does it work? Does it solve the need? Communicate the results and get feedback. Analyze and talk about what works, what doesn't and what could be improved.</p>"
+        }
+    ]
+}

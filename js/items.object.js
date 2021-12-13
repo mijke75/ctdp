@@ -23,22 +23,43 @@ export class Items {
 
         this.registeredEvents = {};
 
-        this.list = [];
+        this.list = {};
     }
 
-    loadItems() {
+    loadItems(phaseId) {
         // Load items from Storage
-        const storageList = JSON.parse(localStorage.items || "{}");
+        let counter = 0;
+
+        // BACKWARD COMPATIBILITY v0.5 *****************************************************
+        // const storageList = JSON.parse(localStorage[this.root.methodology.id] || "{}");
+        // BACKWARD COMPATIBILITY v0.5 *****************************************************
+
+        // BACKWARD COMPATIBILITY v0.5 *****************************************************
+        let storageList = JSON.parse(localStorage[this.root.methodology.id] || "{}");
+
+        // There is a design process on-going from version 0.5 (which uses items in LocalStorage)
+        if(this.root.methodology.id == 'ctdp' && 
+            typeof localStorage['items'] != 'undefined' && 
+            (typeof localStorage[this.root.methodology.id] == 'undefined' ||
+             localStorage[this.root.methodology.id] == '{}') ) 
+        {
+            storageList = JSON.parse(localStorage['items'] || "{}");
+            localStorage[this.root.methodology.id] = localStorage['items'] ;
+            delete localStorage['items'];
+        }
+        // BACKWARD COMPATIBILITY v0.5 *****************************************************
+
         for (let id in storageList) {
             if (!storageList.hasOwnProperty(id)) continue;
             let listitem = storageList[id];
-            if (storageList[id].phase == this.parent.id) {
-                let item = new Item(this, storageList[id]);
-                item.render();
+            if (storageList[id].phase == phaseId) {
+                let item = new Item(this);
+                item.load(id);
                 this.list[item.id] = item;
+                counter++;
             }
         };
-        this.triggerEvent('loadItems');
+        this.triggerEvent('loadItems', [counter]);
     }
     
     // Open the Modal so that the user can create an Item
@@ -49,15 +70,14 @@ export class Items {
 
         modal.addEventListener('submit', (item) => {
             this.list[item.id] = JSON.stringify(item);
-            item.render();
-            this.triggerEvent('newItem', [true]);
+            this.triggerEvent('newItem', [item]);
         });
     }
 
-    // Add a created Item to this list
-    addItem(item) {
+    // Move a created Item to this list
+    moveItem(item) {
         this.list[item.id] = item;
-        this.triggerEvent('addItem', [true]);
+        this.triggerEvent('moveItem', [true]);
     }
 
     // Remove an Item from this list

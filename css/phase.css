@@ -1,6 +1,7 @@
 .phase-container {
     position: relative;
     z-index: 1;
+    overflow: hidden;
 }
 
 .phase-container::after {
@@ -33,6 +34,7 @@
     width: calc(24% - 15px);
     float: left;
     padding-top: 20px;
+    background-color: var(--gray-20-opacity);
     border-right: 1px solid var(--white);
     border-left: 1px solid var(--white);
     box-sizing: border-box;
@@ -61,51 +63,6 @@
     z-index: -1; 
 }
 
-#trigger.phase.drop-over {
-    background: repeating-linear-gradient(
-        45deg,
-        var(--phase-trigger),
-        var(--phase-trigger) 10px,
-        var(--phase-trigger-50-opacity) 10px,
-        var(--phase-trigger-50-opacity) 20px
-    );
-}
-#ideation.phase.drop-over {
-    background: repeating-linear-gradient(
-        45deg,
-        var(--phase-ideation),
-        var(--phase-ideation) 10px,
-        var(--phase-ideation-50-opacity) 10px,
-        var(--phase-ideation-50-opacity) 20px
-    );
-}
-#design.phase.drop-over {
-    background: repeating-linear-gradient(
-        45deg,
-        var(--phase-design),
-        var(--phase-design) 10px,
-        var(--phase-design-50-opacity) 10px,
-        var(--phase-design-50-opacity) 20px
-    );
-}
-#realisation.phase.drop-over {
-    background: repeating-linear-gradient(
-        45deg,
-        var(--phase-realisation),
-        var(--phase-realisation) 10px,
-        var(--phase-realisation-50-opacity) 10px,
-        var(--phase-realisation-50-opacity) 20px
-    );
-}
-#evaluation.phase.drop-over {
-    background: repeating-linear-gradient(
-        45deg,
-        var(--phase-evaluation),
-        var(--phase-evaluation) 10px,
-        var(--phase-evaluation-50-opacity) 10px,
-        var(--phase-evaluation-50-opacity) 20px
-    );
-}
 
 .phase header {
     display: block;
@@ -122,14 +79,12 @@
     text-align: center;
     text-transform: uppercase;
     display: inline-block;
+    transition: transform 250ms ease-in-out;
 }
 
 .phase.state-collapsed h2 {
-    font-size: 0;
-}
-
-.phase.state-collapsed h2 span {
-    font-size: 22px;
+    writing-mode: vertical-rl;
+    transform: rotate(-180deg);
 }
 
 .phase .itemCount, .phase .newItem {
@@ -201,14 +156,6 @@
     writing-mode: horizontal-tb;
 }
 
-
-.trigger { background-color: var(--phase-trigger); }
-.ideation { background-color: var(--phase-ideation); }
-.design { background-color: var(--phase-design); }
-.realisation { background-color: var(--phase-realisation); }
-.evaluation { background-color: var(--phase-evaluation); }
-
-
 .stage {
     position: absolute;
     top: calc(50% - 25px);
@@ -233,7 +180,7 @@
     transition: visibility 0s ease 500ms, opacity 500ms;
 }
 
-.stage .letter {
+.stage .icon {
     width: 60px;
     margin: 0 auto;
     line-height: 60px;
@@ -244,23 +191,16 @@
     box-sizing: content-box;
 }
 
-.stage.i { right: calc(86% - 185px); }
-.stage.c { right: calc(62% - 170px); }
-.stage.d { right: calc(38% - 155px); }
-.stage.p { right: calc(14% - 140px); }
-
-
 .phase .item {
     z-index: 2;
     display: none;
-    padding: 4px 6px;
-    height: 20px;
-    line-height: 20px;
+    padding: 0 6px;
+    height: 36px;
+    line-height: 30px;
     cursor: grab;
     color: var(--white);
     border: 3px solid var(--white);
     border-radius: .5em;
-    position: relative;
 }
 
 .phase .item.has-results {
@@ -270,7 +210,7 @@
 }
 
 .phase.state-active .item {
-    display: inline;
+    display: inline-block;
 }
 
 .phase .item.ui-draggable-dragging {
@@ -296,26 +236,6 @@
     background: var(--white-75-opacity);
 }
 
-#realisation footer {
-    width: calc(100% - 66px);
-}
-
-#evaluation footer {
-    width: calc(100% + 68px);
-    left: -68px;
-}
-
-#realisation.state-collapsed footer,
-#realisation.state-active footer {
-        width: 100%;
-}
-
-#evaluation.state-collapsed footer, 
-#evaluation.state-active footer {
-        width: 100%;
-    left: 0;
-}
-
 footer .phase-action {
     width: 100%;
     display: inline-block;
@@ -326,6 +246,7 @@ footer .phase-action {
     visibility: visible;
     opacity: 1;
     transition: visibility 0s ease 0s, opacity 500ms;
+    color: var(--red);
 }
 
 .phase.state-collapsed footer .phase-action {
@@ -333,9 +254,3 @@ footer .phase-action {
     opacity: 0;
     transition: visibility 0s ease 500ms, opacity 500ms;
 }
-
-#trigger .phase-action { color: var(--phase-trigger); }
-#ideation .phase-action { color: var(--phase-ideation); }
-#design .phase-action { color: var(--phase-design); }
-#realisation .phase-action { color: var(--phase-realisation); }
-#evaluation .phase-action { color: var(--phase-evaluation); }

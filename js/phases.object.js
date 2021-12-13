@@ -1,4 +1,5 @@
 import { Phase } from './phase.object.js';
+import * as options from './options.js';
 
 export class Phases {
 
@@ -8,29 +9,36 @@ export class Phases {
         this.root = parent.root;
         
         this.list = [];
-        this.stateOptions = this.root.options.stateOptions;
+        this.stateOptions = options.default.stateOptions;
     }
 
-    addPhase(element) {
-        this.list.push(new Phase(this, element));
+    loadPhases(phases) {
+        const self = this;
+        $.each ( phases, function( index, phaseInfo ) {
+            self.addPhase(phaseInfo);
+        });
+    }
+
+    addPhase(phaseInfo) {
+        this.list.push(new Phase(this, phaseInfo));
     }
 
     minimizeAll() {
         this.list.forEach(phase => {
             phase.phaseState = 'collapsed';
-            phase.phaseElement.addClass(this.stateOptions.collapsed);
-            phase.phaseElement.removeClass(this.stateOptions.active);
+            $('#' + phase.id).addClass(this.stateOptions.collapsed);
+            $('#' + phase.id).removeClass(this.stateOptions.active);
         });
-        this.root.hideStages();
+        this.root.stages.hideStages();
     }
 
     resetAll() {
         this.list.forEach(phase => {
             phase.phaseState = 'closed';
-            phase.phaseElement.removeClass(this.stateOptions.collapsed);
-            phase.phaseElement.removeClass(this.stateOptions.active);
+            $('#' + phase.id).removeClass(this.stateOptions.collapsed);
+            $('#' + phase.id).removeClass(this.stateOptions.active);
         });
-        this.root.showStages();
+        this.root.stages.showStages();
     }
 
 }

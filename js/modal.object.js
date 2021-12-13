@@ -1,3 +1,5 @@
+import * as options from './options.js';
+
 export class Modal {
       
     // Create an event listener to all public methods in this class
@@ -15,21 +17,22 @@ export class Modal {
 
     constructor(phase, item) {    
         this.registeredEvents = {};
+        this.options = options.default;
 
-        this.fields = item.root.options.fields;
+        this.fields = this.options.fields;
         this.phaseObj = phase;
 
-        this.modalElement = $(item.root.options.modal);
-        this.modalOverlayElement = $(item.root.options.modal + ' ' + item.root.options.modalOverlay);
+        this.modalElement = $(this.options.modal);
+        this.modalOverlayElement = $(this.options.modal + ' ' + this.options.modalOverlay);
 
-        this.modalTitleElement = $(item.root.options.modal + ' ' + item.root.options.modalTitle);
+        this.modalTitleElement = $(this.options.modal + ' ' + this.options.modalTitle);
         this.title = this.phaseObj.title;
         this.phaseId = this.phaseObj.id;
         this.modalTitleElement.html(this.title);
 
-        this.submitElement = $(item.root.options.modalSubmitButton);
-        this.cancelElement = $(item.root.options.modalCancelButton);
-        this.removeElement = $(item.root.options.modalRemoveButton);
+        this.submitElement = $(this.options.modalSubmitButton);
+        this.cancelElement = $(this.options.modalCancelButton);
+        this.removeElement = $(this.options.modalRemoveButton);
 
         // Attach some click events to HTML elements
         this.modalOverlayElement.off('click').on('click', (e) => { this.close(e); });
@@ -38,8 +41,8 @@ export class Modal {
         this.removeElement.off('click').one('click', (e) => { this.remove(e); });
 
         // Attach some other events to HTML field elements
-        $(item.root.options.modal + ' textarea').off('input').on('input', (e) => { this.resizeTextarea(e) });
-        $(item.root.options.modal + ' select').off('change').on('change', (e) => { this.changeSelect(e) });
+        $(this.options.modal + ' textarea').off('input').on('input', (e) => { this.resizeTextarea(e) });
+        $(this.options.modal + ' select').off('change').on('change', (e) => { this.changeSelect(e) });
 
         this.item = item;
         this.mode = (item.id == '' ? 'new' : 'edit');
@@ -59,16 +62,41 @@ export class Modal {
 
     // Get all the values from the form fields and update the Item element we're working with
     submit() {
-        this.item.title = $(this.fields.title).val();
-        this.item.description = $(this.fields.description).val();
-        this.item.researchQuestion = $(this.fields.researchQuestion).val();
-        this.item.researchStrategy = $(this.fields.researchStrategy).val();
-        this.item.researchMethod = $(this.fields.researchMethod).val();
-        this.item.researchConclusions = $(this.fields.researchConclusions).val();
-        this.item.researchResults = $(this.fields.researchResults).val();
-        this.item.save();
-        this.close();
-        this.triggerEvent('submit', [this.item]);
+        const self = this;
+        if(this.#validate()) {
+            this.item.title = $(this.fields.title).val();
+            this.item.description = $(this.fields.description).val();
+            this.item.researchQuestion = $(this.fields.researchQuestion).val();
+            this.item.researchStrategy = $(this.fields.researchStrategy).val();
+            this.item.researchMethod = $(this.fields.researchMethod).val();
+            this.item.researchConclusions = $(this.fields.researchConclusions).val();
+            this.item.researchResults = $(this.fields.researchResults).val();
+            this.item.save();
+            this.close();
+            this.triggerEvent('submit', [this.item]);
+        }
+        else {
+            // Mark invalid fields
+            jQuery('input:invalid, textarea:invalid, select:invalid').addClass('invalid');
+
+            // Get the names of all invalid fields
+            let fields = '';
+            for(let f = 0; f < this.#invalidFields.length; f++) {
+                fields += this.#invalidFields[f] + ', ';
+            }
+            let multiple = (this.#invalidFields.length > 1) ? 's' : '';
+
+            // Trim the invalid fields text and remove the last ,
+            fields = $.trim(fields).slice(0,-1);
+
+            // Show an alert, wait 250ms so that the invalid class has been loaded
+            setTimeout(function() {
+                // We want to have a single click event handler to prevent double click on the submit button.
+                // But that means we have to reattach the event handler after an invalid submit
+                self.submitElement.off('click').one('click', (e) => { self.submit(e); });
+                alert('Please fill in field' + multiple + ' "' + fields + '".');
+            }, 250);
+        }
     }
 
     remove() {
@@ -77,9 +105,27 @@ export class Modal {
         }
     }
 
+    #invalidFields = [];
+    #validate(){
+        const self = this;
+        var required = $('input, textarea, select').filter('[required]:visible');
+
+        let allRequired = true;
+        // Loop through all required fields and save them in array if they are not valid
+        required.each(function(){
+            if($(this).val() == ''){
+                self.#invalidFields.push($(this).attr('id'));
+                allRequired = false;
+            }
+        });
+        return allRequired;
+    }
+
 
     // Get all the values from the Item element we're working with and update the form fields 
     setForm(item) {
+        this.#invalidFields = [];
+        $('input,textarea,select').removeClass('invalid');
         $(this.fields.title).val(this.item.title);
         $(this.fields.description).val(this.item.description);
         $(this.fields.researchQuestion).val(this.item.researchQuestion);
@@ -104,7 +150,7 @@ export class Modal {
 
     // Get all the strategies from the dotFramework JSON file and create OPTIONs for the SELECT
     setSelectStrategies() {
-        let self = this;
+        const self = this;
         $(self.fields.researchStrategy + ' .' + self.fields.researchStrategyOption).remove();
         $.each ( self.item.root.dotframework.strategies, function( index, strategy ) {
             $('<option class="' + self.fields.researchStrategyOption + '" value="' + index + '">' + strategy.name + '</option>').appendTo(self.fields.researchStrategy);
@@ -113,7 +159,7 @@ export class Modal {
 
     // Get all the methods from the dotFramework JSON file, given the selected strategy, and create OPTIONs for the SELECT
     setSelectMethods() {
-        let self = this;
+        const self = this;
         const strategyIndex = $(self.fields.researchStrategy).val();
 
         // Empty the select
@@ -148,18 +194,16 @@ export class Modal {
 
     // If a strategy or method is choosen, update the information icon and add a link to the resource about this strategy/method
     changeSelect(e) {
-        self = this;
+        const self = this;
         $(e.currentTarget).attr('data-value', $(e.currentTarget).val());
 
         // Check if we're dealing with a strategy select
         if ($(e.currentTarget).attr('id') == self.fields.researchStrategy.substring(1)) {
             let information = $(self.fields.researchStrategy + ' ~ ' + self.fields.researchInformation);
             if ($(e.currentTarget).val() == '') {
-                information.removeClass(self.fields.haslink);
                 information.removeAttr('href');
             }
             else {
-                information.addClass(self.fields.haslink);
                 information.attr('href', self.item.root.dotframework.strategies[$(e.currentTarget).val()].link);
             }
             self.setSelectMethods();
@@ -168,7 +212,6 @@ export class Modal {
         else if ($(e.currentTarget).attr('id') == self.fields.researchMethod.substring(1)) {
             let information = $(self.fields.researchMethod + ' ~ ' +  + self.fields.researchInformation);
             if ($(e.currentTarget).val() == '') {
-                information.removeClass(self.fields.haslink);
                 information.removeAttr('href');
             }
             else {

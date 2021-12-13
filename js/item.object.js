@@ -62,7 +62,7 @@ export class Item {
 
     // We can load an Item by its id directly from the local storage
     load(id) {
-        let items = JSON.parse(localStorage.items || "{}");
+        let items = JSON.parse(localStorage[this.#root.methodology.id] || "{}");
         let item = items[id];
 
         this.id = item.id;
@@ -88,22 +88,52 @@ export class Item {
         // Ig this Item has a research strategy, show its matching image next to the title
         let imageElement = '';
         if (this.researchStrategy !='') {
-            imageElement = '<img class="research-image" src="images/dotframework' + this.researchStrategy + '.png">';
+            imageElement = '<img class="research-image" src="images/dotframework/dotframework' + this.researchStrategy + '.png">';
         }
         let itemElement = $('<div class="item ' + hasResults + '" id="' + this.id + '" data-phase="' + this.phase + '" data-title="' + this.title + '">' + this.title + imageElement + '</div>');
 
         // Make the Item HTML element draggable so we can move it to another position in this phase or move it to a different phase
+        const self = this;
         itemElement.draggable({
             scroll: false,
             cursor: 'move',
             revert: 'invalid',
-            item: this
+            item: this,
+            // If we start dragging, position the mouse pointer in the middle of the element
+            start: function(event, ui){
+                $(this).draggable('instance').offset.click = {
+                    left: Math.floor(ui.helper.width() / 2),
+                    top: Math.floor(ui.helper.height() / 2)
+                }; 
+            },
+            // If we drop a draggable Item take care of its HTML and storage
+            stop: function( event, ui ) {
+                let items = JSON.parse(localStorage[self.root.methodology.id] || "{}");
+
+                // The Item has been moved to another phase, let's take care of the HTML and local Storage
+                if(self.phase != ui.helper.attr('data-phase')) {
+                    self.position = {top: 100,left: 100};
+
+                    items[self.id].phase = self.phase;
+
+                    // Update html
+                    $('#' + self.id).detach().appendTo($('#' + self.phase)); 
+                    $('#' + self.id).css(self.position);
+                    $('#' + self.id).attr('data-phase', self.phase);
+                }
+                else {
+                    // If the draggable Item is not moved to another phase, just save its new position
+                    self.position = ui.position;
+                }
+                items[self.id].position = self.position;
+                localStorage[self.root.methodology.id] = JSON.stringify(items);
+            }
         });
         // Always attach the click event after making it draggable, so it won't fire during dragging the Item
         itemElement.on('click', (e) => { this.open(); });
-        itemElement.css(this.position);
         // Write the created Item HTML element to its defined phase HTML element
-        itemElement.appendTo(this.#parent.parent.phaseElement);
+        itemElement.css(this.position);
+        itemElement.appendTo($('#' + this.#parent.parent.id));
     }
 
     // Open the Item into a modal, so we can edit it.
@@ -130,7 +160,7 @@ export class Item {
             }
             let newTitle = this.title;
             if (this.researchStrategy !='') {
-                newTitle = this.title + '<img class="research-image" src="images/dotframework' + this.researchStrategy + '.png">';
+                newTitle = this.title + '<img class="research-image" src="images/dotframework/dotframework' + this.researchStrategy + '.png">';
             }
     
             $('#' + this.id).html(newTitle);
@@ -138,7 +168,7 @@ export class Item {
         }
 
         // Next we have to save it in the local storage
-        let items = JSON.parse(localStorage.items || "{}");
+        let items = JSON.parse(localStorage[this.#root.methodology.id] || "{}");
         items[this.id] = {
             id: this.id, 
             title: this.title, 
@@ -152,7 +182,7 @@ export class Item {
             position: this.position
         };
 
-        localStorage.items = JSON.stringify(items);
+        localStorage[this.#root.methodology.id] = JSON.stringify(items);
         return items[this.id];
     }
 
@@ -163,9 +193,9 @@ export class Item {
             this.#parent.removeItem(this.id);
 
             // remove item from storage
-            let items = JSON.parse(localStorage.items || "{}");
+            let items = JSON.parse(localStorage[this.#root.methodology.id] || "{}");
             delete items[this.id];
-            localStorage.items = JSON.stringify(items);
+            localStorage[this.#root.methodology.id] = JSON.stringify(items);
 
             // remove item from screen
             $('#' + this.id).remove();

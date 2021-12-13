@@ -1,0 +1,81 @@
+:root {
+    --legenda-bg: #445469;
+
+    --phase-dd-discover: rgba(30, 161, 133, 1); /* #1ea185 */
+    --phase-dd-discover-80-opacity: rgba(30, 161, 133, 0.8);
+
+    --phase-dd-define: rgba(155, 187, 92, 1); /* #9bbb5c */
+    --phase-dd-define-80-opacity: rgba(155, 187, 92, 0.8);
+
+    --phase-dd-develop: rgba(242, 155, 38, 1); /* #f29b26 */
+    --phase-dd-develop-80-opacity: rgba(242, 155, 38, 0.8);
+
+    --phase-dd-deliver: rgba(189, 57, 47, 1); /* #bd392f */
+    --phase-dd-deliver-80-opacity: rgba(189, 57, 47, 0.8);
+}
+
+#dd .stage.re { right: calc(86% - 185px); }
+#dd .stage.in { right: calc(62% - 170px); }
+#dd .stage.id { right: calc(38% - 155px); }
+#dd .stage.pr { right: calc(14% - 140px); }
+
+#dd .phase {
+    width: calc(24% - 2px);
+}
+
+#dd .phase.state-collapsed {
+    width: 75px;
+}
+
+#dd .phase.state-active {
+    width: calc(100% - 300px);
+}
+
+
+#dd .discover { background-color: var(--phase-dd-discover); }
+#dd .define { background-color: var(--phase-dd-define); }
+#dd .develop { background-color: var(--phase-dd-develop); }
+#dd .deliver { background-color: var(--phase-dd-deliver); }
+
+#dd .discover .phase-action { color: var(--phase-dd-discover); }
+#dd .define .phase-action { color: var(--phase-dd-define); }
+#dd .develop .phase-action { color: var(--phase-dd-develop); }
+#dd .deliver .phase-action { color: var(--phase-dd-deliver); }
+
+
+#dd .discover.phase.drop-over {
+    background: repeating-linear-gradient(
+        45deg,
+        var(--phase-dd-discover),
+        var(--phase-dd-discover) 10px,
+        var(--phase-dd-discover-80-opacity) 10px,
+        var(--phase-dd-discover-80-opacity) 20px
+    );
+}
+#dd .define.phase.drop-over {
+    background: repeating-linear-gradient(
+        45deg,
+        var(--phase-dd-define),
+        var(--phase-dd-define) 10px,
+        var(--phase-dd-define-80-opacity) 10px,
+        var(--phase-dd-define-80-opacity) 20px
+    );
+}
+#dd .develop.phase.drop-over {
+    background: repeating-linear-gradient(
+        45deg,
+        var(--phase-dd-develop),
+        var(--phase-dd-develop) 10px,
+        var(--phase-dd-develop-80-opacity) 10px,
+        var(--phase-dd-develop-80-opacity) 20px
+    );
+}
+#dd .deliver.phase.drop-over {
+    background: repeating-linear-gradient(
+        45deg,
+        var(--phase-dd-deliver),
+        var(--phase-dd-deliver) 10px,
+        var(--phase-dd-deliver-80-opacity) 10px,
+        var(--phase-dd-deliver-80-opacity) 20px
+    );
+}
