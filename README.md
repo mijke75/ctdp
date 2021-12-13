@@ -8,7 +8,7 @@ With this tool, students can create research plans based on their chosen design 
 
 ### Installing
 
-There's no need of installing this tool You can use it on https://i873914.hera.fhict.nl
+There's no need of installing this tool. You can use it on https://i873914.hera.fhict.nl
 
 ### Using a local copy
 
@@ -22,7 +22,8 @@ If you open your local website you should see the home page with 5 pre-defined m
 * /data: contains information about the DOT Framework and the 5 pre-define methodologies.
 * /images: contains images for the dot framework, the 5 methodologies and the select dropdown
 * /js: contains all classes of the tool. Necesary classes are imported in the code when needed.
-* index.html: contains the HTML structure of the tool.
+* index.html: contains the HTML structure of the homepage.
+* tool.html: contains the HTML structure of the tool (most HTML is created in the class objects).
 
 ## Contributing
 
