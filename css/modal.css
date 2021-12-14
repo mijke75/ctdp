@@ -50,12 +50,14 @@
     padding: 16px 64px 32px;    
 }
 
-.modal-dialog .dialog-content h4 {
-    margin: 24px 0 0;
+.modal-dialog .dialog-content h4, 
+.modal-dialog .tab-content h4 {
+        margin: 24px 0 0;
 }
 
-.modal-dialog .dialog-content p {
-    margin: 8px 0;
+.modal-dialog .dialog-content p, 
+.modal-dialog .tab-content p {
+        margin: 12px 0;
 }
 
 .modal-dialog .dialog-button {
