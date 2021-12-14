@@ -29,6 +29,7 @@ export class Items {
     loadItems(phaseId) {
         // Load items from Storage
         let counter = 0;
+        this.list = {};
 
         // BACKWARD COMPATIBILITY v0.5 *****************************************************
         // const storageList = JSON.parse(localStorage[this.root.methodology.id] || "{}");
