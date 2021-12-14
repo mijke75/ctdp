@@ -111,7 +111,7 @@ export class Phase {
 
     // Make the phase HTML element droppable, so we can drop a draggable Item on it
     setDroppable() {
-        let self = this;
+        const self = this;
         $('#' + this.id).droppable({
             accept: ".item",
             // If we move a draggable Item (from another phase) over this phase HTML element, give an indicator that we are droppable.

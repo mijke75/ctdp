@@ -15,7 +15,8 @@ export class Modal {
         this.registeredEvents[name]?.forEach(fnc => fnc.apply(this, args));
     }
 
-    constructor(phase, item) {    
+    constructor(root, phase, item) {    
+        this.root = root;
         this.registeredEvents = {};
         this.options = options.default;
 
@@ -88,21 +89,30 @@ export class Modal {
 
             // Trim the invalid fields text and remove the last ,
             fields = $.trim(fields).slice(0,-1);
+            this.#invalidFields = [];
 
-            // Show an alert, wait 250ms so that the invalid class has been loaded
-            setTimeout(function() {
-                // We want to have a single click event handler to prevent double click on the submit button.
-                // But that means we have to reattach the event handler after an invalid submit
-                self.submitElement.off('click').one('click', (e) => { self.submit(e); });
-                alert('Please fill in field' + multiple + ' "' + fields + '".');
-            }, 250);
+            // We want to have a single click event handler to prevent double click on the submit button.
+            // But that means we have to reattach the event handler after an invalid submit
+            self.submitElement.off('click').one('click', (e) => { self.submit(e); });
+
+            // Show an alert
+            $.toast({
+                type: 'error', 
+                position: 'center',
+                autoDismiss: true,
+                autoDismissDelay: 3000,
+                message: 'Please fill in field' + multiple + ' "' + fields + '".'
+            });
         }
     }
 
     remove() {
-        if (this.item.remove()) {
-            this.close();
-        }
+        const self = this;
+        this.item.remove().done(
+            function() { 
+                self.close();
+            }
+        );
     }
 
     #invalidFields = [];

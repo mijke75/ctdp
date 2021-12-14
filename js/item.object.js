@@ -139,7 +139,7 @@ export class Item {
     // Open the Item into a modal, so we can edit it.
     open() {
         this.phase = this.#parent.parent.id;
-        const modal = new Modal(this.#parent.parent, this);
+        const modal = new Modal(this.#root, this.#parent.parent, this);
     }
 
     // Save or update the Item
@@ -187,20 +187,34 @@ export class Item {
     }
 
     remove() {
-        const confirmed = confirm('Are you sure you want to remove this item?');
-        if (confirmed) {
-            // Remove item from parent list
-            this.#parent.removeItem(this.id);
+        var dfd = $.Deferred();
 
-            // remove item from storage
-            let items = JSON.parse(localStorage[this.#root.methodology.id] || "{}");
-            delete items[this.id];
-            localStorage[this.#root.methodology.id] = JSON.stringify(items);
+        const self = this;
+        $.toast({
+            type: 'confirm', 
+            position: 'center',
+            message: 'Are you sure you want to remove this item??'
+        }).done(
+            function() { 
+                // Remove item from parent list
+                self.#parent.removeItem(self.id);
 
-            // remove item from screen
-            $('#' + this.id).remove();
-        }
-        return confirmed;
+                // remove item from storage
+                let items = JSON.parse(localStorage[self.#root.methodology.id] || "{}");
+                delete items[self.id];
+                localStorage[self.#root.methodology.id] = JSON.stringify(items);
+
+                // remove item from screen
+                $('#' + self.id).remove();
+
+                dfd.resolve();
+            }
+        ).fail(
+            function() {
+                dfd.reject();
+            }
+        );
+        return dfd.promise();
     }
 
 }

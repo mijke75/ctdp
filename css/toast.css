@@ -1,0 +1,136 @@
+:root {
+    --toast-bg: rgba(0, 0, 0, 0.8);
+    --toast-color: #efefef;
+
+    --toast-success-bg: #26d68a;
+    --toast-success: rgba(0, 0, 0, 0.6);
+
+    --toast-warning-bg: #ffa533;
+    --toast-warning: rgba(0, 0, 0, 0.6);
+
+    --toast-info-bg: #2cbcff;
+    --toast-info: rgba(0, 0, 0, 0.6);
+
+    --toast-error-bg: #f44336;
+    --toast-error: rgba(0, 0, 0, 0.6);
+}
+
+
+
+/* Please check if id of container matches with your HTML */
+#toasts {
+    z-index: 1100;
+    min-height: 0;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 480px;
+}
+
+#toasts.left-top, #toasts.top-left { top: 20px; left: 20px; }
+
+#toasts.right-top, #toasts.top-right { top: 20px; right: 20px; }
+
+#toasts.center-top, #toasts.top-center { top: 20px; left: 0; right: 0; margin: auto; }
+
+
+#toasts.left-center, #toasts.center-left { top: 50%; -webkit-transform: translateY(-50%); transform: translateY(-50%); left: 20px; }
+
+#toasts.right-center, #toasts.center-right { top: 50%; -webkit-transform: translateY(-50%); transform: translateY(-50%); right: 20px; }
+
+#toasts.center, #toasts.center-center { top: 50%; left: 50%; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%); }
+
+
+#toasts.left-bottom, #toasts.bottom-left { top: auto; bottom: 20px; left: 20px; }
+
+#toasts.right-bottom, #toasts.bottom-right { top: auto; bottom: 20px; right: 20px; }
+
+#toasts.center-bottom, #toasts.bottom-center { top: auto; bottom: 20px; left: 0; right: 0; margin: auto; }
+
+
+#toasts .toast {
+    background: var(--toast-bg);
+    border-radius: 8px;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, .1);
+    color: var(--toast-color);
+    cursor: default;
+    margin-bottom: 20px;
+    opacity: 0;
+    position: relative;
+    padding: 20px;
+    transform: translateY(15%);
+    transition: opacity .5s ease-in-out, transform .5s ease-in-out;
+    width: 100%;
+    will-change: opacity, transform;
+} 
+
+#toasts .toast p {
+    margin: 0 8px 0 0;
+    padding: 0;
+}
+
+#toasts .toast .buttons {
+    text-align: right;
+    margin: 32px 12px 8px;
+}
+
+#toasts .toast button {
+    width: 64px;
+    height: 32px;
+    margin-left: 16px;
+    border: none;
+    background-color: var(--green);
+    font-size: 12px;
+    color: var(--white);
+    padding: 8px 16px;
+    border-radius: 3px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#toasts .toast.success {
+    background: var(--toast-success-bg);
+    color: var(--toast-success);
+}
+
+#toasts .toast.warning {
+    background: var(--toast-warning-bg);
+    color: var(--toast-warning);
+}
+
+#toasts .toast.info {
+    background: var(--toast-info-bg);
+    color: var(--toast-info);
+}
+
+#toasts .toast.error {
+    background: var(--toast-error-bg);
+    color: var(--toast-error);
+}
+
+#toasts .toast.show {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity .5s ease-in-out, transform .5s ease-in-out;
+}
+
+#toasts .toast.hide {
+    height: 0;
+    margin: 0;
+    opacity: 0;
+    overflow: hidden;
+    padding: 0 30px;
+    transition: all .5s ease-in-out;
+}
+
+#toasts .toast .close {
+    cursor: pointer;
+    font-size: 24px;
+    height: 16px;
+    margin-top: -16px;
+    position: absolute;
+    right: 14px;
+    top: 32px;
+    width: 16px;
+}

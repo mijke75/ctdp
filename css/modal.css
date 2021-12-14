@@ -67,8 +67,7 @@
     border: none;
     background-color: var(--green);
     font-size: 14px;
-    color: white;
-    padding: 15px 32px;
+    color: var(--white);
     border-radius: 5px;
     text-align: center;
     text-decoration: none;

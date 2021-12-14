@@ -66,7 +66,7 @@ export class Items {
     newItem() {
         const item = new Item(this);
         item.phase = this.parent.id;
-        const modal = new Modal(this.parent, item);
+        const modal = new Modal(this.root, this.parent, item);
 
         modal.addEventListener('submit', (item) => {
             this.list[item.id] = JSON.stringify(item);
