@@ -47,7 +47,7 @@ export class Phase {
         phaseElement += '<header>';
         phaseElement += '<h2>' + this.title + '</h2>';
         phaseElement += '<div class="' + this.options.itemCounter.substring(1) + '" value="0">0</div>';
-        phaseElement += '<div class="' + this.options.newItem.substring(1) + '">+</div>';
+        phaseElement += '<div class="' + this.options.newItem.substring(1) + '" title="Add item">+</div>';
         phaseElement += '</header>';
         phaseElement += '<footer>';
         for(let i = 0; i < this.footer.length; i++) {

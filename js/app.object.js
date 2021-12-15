@@ -10,7 +10,7 @@ export class App {
         this.options = options.default;
         
         // Version number which will be exported when design is saved
-        this.version = '0.8.6';
+        this.version = '0.8.7';
         $(this.options.versionElement).html('v.' + this.version);
 
         this.methodology;

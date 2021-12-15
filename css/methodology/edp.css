@@ -28,7 +28,7 @@
 
 
 #edp .phase {
-    width: calc(15% - 23px);
+    width: calc(14.2% - 10px);
 }
 
 #edp .phase.state-collapsed {

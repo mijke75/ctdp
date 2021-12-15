@@ -220,7 +220,7 @@ export class Modal {
         }
         // Check if we're dealing with a method select
         else if ($(e.currentTarget).attr('id') == self.fields.researchMethod.substring(1)) {
-            let information = $(self.fields.researchMethod + ' ~ ' +  + self.fields.researchInformation);
+            let information = $(self.fields.researchMethod + ' ~ ' + self.fields.researchInformation);
             if ($(e.currentTarget).val() == '') {
                 information.removeAttr('href');
             }

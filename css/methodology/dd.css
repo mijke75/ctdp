@@ -20,7 +20,7 @@
 #dd .stage.pr { right: calc(14% - 140px); }
 
 #dd .phase {
-    width: calc(24% - 2px);
+    width: calc(25% - 19px);
 }
 
 #dd .phase.state-collapsed {
