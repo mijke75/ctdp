@@ -27,7 +27,7 @@
     height: 4px;
     margin-bottom: 5px;
     position: relative;
-    background: var(--legenda);
+    background: var(--black);
     border-radius: 3px;
     z-index: 21;
     transform-origin: 4px 0px;

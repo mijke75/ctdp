@@ -22,14 +22,14 @@
     margin: 0 auto;
     font-size: 18px;
     color: rgba(0, 0, 0, 0.5);
-    margin-bottom: 32px;
+    margin-bottom: 56px;
     text-align: justify;
 }
 
 #start .cards {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fill, 270px);
+    grid-template-columns: repeat( auto-fit, minmax(270px, 270px) );
     justify-content: space-between;
     grid-gap: 32px;
 }
@@ -60,7 +60,7 @@
 }
 
 #start .card {
-    margin: 32px 0;
+    margin: auto;
     transition: all .4s cubic-bezier(0.175, 0.885, 0, 1);
     background-color: #fff;
     position: relative;
