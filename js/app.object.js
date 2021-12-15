@@ -10,7 +10,7 @@ export class App {
         this.options = options.default;
         
         // Version number which will be exported when design is saved
-        this.version = '0.8.7';
+        this.version = '0.8.11';
         $(this.options.versionElement).html('v.' + this.version);
 
         this.methodology;
@@ -210,8 +210,13 @@ export class App {
                 // Check if this is a valid export file
                 if(fileContent['valid'] == 'true' && fileContent['methodology'] == self.methodology.id) {
                     let checkVersion = false;
+
                     // If the application has the same version number as saved in the export file, we're good.
-                    if(fileContent['version'] == self.version) {
+                    let fileVersion = fileContent['version'].split('.');
+                    let appVersion = self.version.split('.');
+
+                    // We only check for the major and minor version numbers (Semantic Versioning is used)
+                    if(fileVersion[0] == appVersion[0] && fileVersion[1] == appVersion[1] ) {
                         self.#loadNewContent(fileContent['items']);
                     }
                     else {
