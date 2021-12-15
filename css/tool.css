@@ -15,3 +15,26 @@
     text-align: center;
     max-width: 500px;
 }
+
+
+
+/* On screens that are 600px or less, set the background color to olive */
+@media screen and (max-width: 600px) {
+    #menu {
+        padding: 40px 25px 20px 100px;
+        background: var(--red);
+        color: var(--black-40-opacity);
+    }
+    #menu li {
+        color: var(--black-60-opacity);
+    }
+    #menu li:hover {
+        border-bottom: 1px solid var(--black-60-opacity);
+    }    
+    #menuToggle span {
+        background: var(--black);
+    }
+    #menuToggle input:checked ~ span {
+        background: var(--black-60-opacity);
+    }
+  }

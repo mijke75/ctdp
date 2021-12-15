@@ -5,8 +5,8 @@
     padding: 40px 25px;
     top: 0;
     left: 0;            
-    background: #cc2311;
-    color: rgba(0, 0, 0, 0.4);
+    background: var(--red);
+    color: var(--black-40-opacity);
     font-size: 32px;
     text-transform: uppercase;
     text-align: center;
@@ -15,7 +15,6 @@
 
 #start main {
     margin: 180px 60px 30px;
-
 }
 
 #start .description {
@@ -152,4 +151,22 @@
     text-decoration: none;
     display: inline-block;
     cursor: pointer;
+}
+
+
+
+/* On screens that are 600px or less, set the background color to olive */
+@media screen and (max-width: 600px) {
+    #start header {
+        font-size: 24px;
+    }
+
+    #start main {
+        margin: 160px 30px 30px;
+    }
+
+    #start .cards {
+        justify-content: space-evenly;
+    }
+    
 }
