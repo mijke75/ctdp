@@ -11,34 +11,34 @@
     --phase-hcd-implementation-80-opacity: rgba(134, 183, 78, 0.8);
 }
 
-#hcd .stage.d1 { right: calc(83% - 185px); }
-#hcd .stage.c1 { right: calc(58.5% - 170px); }
-#hcd .stage.d2 { right: calc(40.5% - 155px); }
-#hcd .stage.c2 { right: calc(17% - 140px); }
+.stage.d1 { right: calc(83% - 185px); }
+.stage.c1 { right: calc(58.5% - 170px); }
+.stage.d2 { right: calc(40.5% - 155px); }
+.stage.c2 { right: calc(17% - 140px); }
 
-#hcd .phase {
+.phase {
     width: calc(33.3% - 25px);
 }
 
-#hcd .phase.state-collapsed {
+.phase.state-collapsed {
     width: 75px;
 }
 
-#hcd .phase.state-active {
+.phase.state-active {
     width: calc(100% - 225px);
 }
 
 
-#hcd .inspiration { background-color: var(--phase-hcd-inspiration); }
-#hcd .ideation { background-color: var(--phase-hcd-ideation); }
-#hcd .implementation { background-color: var(--phase-hcd-implementation); }
+.inspiration { background-color: var(--phase-hcd-inspiration); }
+.ideation { background-color: var(--phase-hcd-ideation); }
+.implementation { background-color: var(--phase-hcd-implementation); }
 
-#hcd .inspiration .phase-action { color: var(--phase-hcd-inspiration); }
-#hcd .ideation .phase-action { color: var(--phase-hcd-ideation); }
-#hcd .implementation .phase-action { color: var(--phase-hcd-implementation); }
+.inspiration .phase-action { color: var(--phase-hcd-inspiration); }
+.ideation .phase-action { color: var(--phase-hcd-ideation); }
+.implementation .phase-action { color: var(--phase-hcd-implementation); }
 
 
-#hcd .inspiration.phase.drop-over {
+.inspiration.phase.drop-over {
     background: repeating-linear-gradient(
         45deg,
         var(--phase-hcd-inspiration),
@@ -47,7 +47,7 @@
         var(--phase-hcd-inspiration-80-opacity) 20px
     );
 }
-#hcd .ideation.phase.drop-over {
+.ideation.phase.drop-over {
     background: repeating-linear-gradient(
         45deg,
         var(--phase-hcd-ideation),
@@ -56,7 +56,7 @@
         var(--phase-hcd-ideation-80-opacity) 20px
     );
 }
-#hcd .implementation.phase.drop-over {
+.implementation.phase.drop-over {
     background: repeating-linear-gradient(
         45deg,
         var(--phase-hcd-implementation),

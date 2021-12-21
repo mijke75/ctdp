@@ -52,12 +52,12 @@
 
 .modal-dialog .dialog-content h4, 
 .modal-dialog .tab-content h4 {
-        margin: 24px 0 0;
+    margin: 24px 0 0;
 }
 
 .modal-dialog .dialog-content p, 
 .modal-dialog .tab-content p {
-        margin: 12px 0;
+    margin: 12px 0;
 }
 
 .modal-dialog .dialog-button {
@@ -249,4 +249,12 @@
     height: 100vh;
     z-index: 50;
     background: var(--black-60-opacity);
+}
+
+
+#modal-about .current-version {
+    color: var(--red);
+    position: absolute;
+    bottom: 20px;
+    right: 30px;
 }

@@ -17,45 +17,45 @@
     --phase-dt-test-80-opacity: rgba(171, 221, 212, 0.8);
 }
 
-#dt .stage i {
+.stage i {
     font-size: 34px;
     line-height: 60px;
 }
 
-#dt .stage.e { right: calc(85% - 110px); }
-#dt .stage.d { right: calc(65% - 90px); }
-#dt .stage.i { right: calc(45% - 80px); }
-#dt .stage.p { right: calc(25% - 60px); }
-#dt .stage.t { right: calc(5% - 50px); }
+.stage.e { right: calc(85% - 110px); }
+.stage.d { right: calc(65% - 90px); }
+.stage.i { right: calc(45% - 80px); }
+.stage.p { right: calc(25% - 60px); }
+.stage.t { right: calc(5% - 50px); }
 
 
-#dt .phase {
+.phase {
     width: calc(20% - 15px);
 }
 
-#dt .phase.state-collapsed {
+.phase.state-collapsed {
     width: 75px;
 }
 
-#dt .phase.state-active {
+.phase.state-active {
     width: calc(100% - 375px);
 }
 
 
-#dt .empathize { background-color: var(--phase-dt-empathize); }
-#dt .define { background-color: var(--phase-dt-define); }
-#dt .ideate { background-color: var(--phase-dt-ideate); }
-#dt .prototype { background-color: var(--phase-dt-prototype); }
-#dt .test { background-color: var(--phase-dt-test); }
+.empathize { background-color: var(--phase-dt-empathize); }
+.define { background-color: var(--phase-dt-define); }
+.ideate { background-color: var(--phase-dt-ideate); }
+.prototype { background-color: var(--phase-dt-prototype); }
+.test { background-color: var(--phase-dt-test); }
 
-#dt .empathize .phase-action { color: var(--phase-dt-empathize); }
-#dt .define .phase-action { color: var(--phase-dt-define); }
-#dt .ideate .phase-action { color: var(--phase-dt-ideate); }
-#dt .prototype .phase-action { color: var(--phase-dt-prototype); }
-#dt .test .phase-action { color: var(--phase-dt-test); }
+.empathize .phase-action { color: var(--phase-dt-empathize); }
+.define .phase-action { color: var(--phase-dt-define); }
+.ideate .phase-action { color: var(--phase-dt-ideate); }
+.prototype .phase-action { color: var(--phase-dt-prototype); }
+.test .phase-action { color: var(--phase-dt-test); }
 
 
-#dt .empathize.phase.drop-over {
+.empathize.phase.drop-over {
     background: repeating-linear-gradient(
         45deg,
         var(--phase-dt-empathize),
@@ -64,7 +64,7 @@
         var(--phase-dt-empathize-80-opacity) 20px
     );
 }
-#dt .define.phase.drop-over {
+.define.phase.drop-over {
     background: repeating-linear-gradient(
         45deg,
         var(--phase-dt-define),
@@ -73,7 +73,7 @@
         var(--phase-dt-define-80-opacity) 20px
     );
 }
-#dt .ideate.phase.drop-over {
+.ideate.phase.drop-over {
     background: repeating-linear-gradient(
         45deg,
         var(--phase-dt-ideate),
@@ -82,7 +82,7 @@
         var(--phase-dt-ideate-80-opacity) 20px
     );
 }
-#dt .prototype.phase.drop-over {
+.prototype.phase.drop-over {
     background: repeating-linear-gradient(
         45deg,
         var(--phase-dt-prototype),
@@ -91,7 +91,7 @@
         var(--phase-dt-prototype-80-opacity) 20px
     );
 }
-#dt .test.phase.drop-over {
+.test.phase.drop-over {
     background: repeating-linear-gradient(
         45deg,
         var(--phase-dt-test),

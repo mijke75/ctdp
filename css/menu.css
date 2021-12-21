@@ -1,3 +1,11 @@
+#headerTitle {
+    display: none;
+}
+
+#footer {
+    display: none;
+}
+
 #menuToggle {
     display: block;
     position: absolute;
@@ -72,13 +80,17 @@
     margin: -85px 0 0 -20px;
     padding: 40px 25px;
     padding-left: 100px;
-    left: 0;            
-    background: var(--white-90-opacity);
+    left: 0;
+    background-color: var(--white-90-opacity);
     list-style-type: none;
     -webkit-font-smoothing: antialiased;
     transform-origin: 0% 0%;
     transform: translate(0, -100%);
     transition: 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+}
+
+#menu a {
+    text-decoration: none;
 }
 
 #menu li {

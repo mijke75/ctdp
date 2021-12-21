@@ -1,10 +1,13 @@
 <html lang="en">
     <head>
-        <meta name="viewport" content="width=device-width,initial-scale=1">
-        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+        <link rel="manifest" href="site.webmanifest">
+
         <link href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="assets/jquery.ui.touch-punch.min.js"></script>
 
         <link href="css/style.css" rel="stylesheet">
         <link href="css/tool.css" rel="stylesheet">
@@ -14,7 +17,8 @@
 
     <body>
         <!-- Header with navigation which is hidden by default -->
-        <header>
+        <header id="header">
+            <h1 id="headerTitle">Design Process Tool</h1>
             <nav role='navigation'>
                 <div id="menuToggle">
                     <input id="menuToggleCheckbox" type="checkbox" />
@@ -22,7 +26,8 @@
                     <span></span>
                     <span></span>
                     <ul id="menu">
-                        <a href="/"><li>Home</li></a>
+                        <!-- TODO replace this when upgrading from test version to live version -->
+                        <a href="/version-mobile/"><li>Home</li></a>
                         <li id="menuitem-about-methodology" onclick="app.about(1)">About Methodology</li>
                         <li onclick="app.about(2)">About This Tool</li>
                         <li onclick="app.about(3)">About DOT Framework</li>
@@ -31,10 +36,7 @@
             </nav>
         </header>
     
-        <div id="WarningScreenWidth">
-            <h3>This tool is optimized for devices with a minimum screen resolution of 1280 x 800 pixels.</h3>
-        </div>
-
+        
 
         <main class="phase-container">
             <!-- Focus in each phase -->
@@ -168,6 +170,7 @@
 
                             <h4>Questions or Remarks?</h4>
                             <p>Please contact Mijke van der Zee (m.vanderzee@fontys.nl)</p>
+                            <div class="current-version"></div>
                         </div>
 
                         <div class="tab-content">
@@ -196,6 +199,19 @@
         </div>
 
         <div id="toasts"></div>
+
+        <footer id="footer" class="tab-bar">
+            <ul>
+                <!-- <li><i class="fas fa-home" onclick="window.location.href='/'"></i></li> -->
+
+                <li><i class="fas fa-random" onclick="app.resetItemPositions()"></i></li>
+                <li><i class="fas fa-trash" onclick="app.clearStorage()"></i></li>
+                <li class="spacer"></li>
+                <li><i class="far fa-folder-open" onclick="app.loadDesignProcess()"></i></li>
+                <li><i class="far fa-save" onclick="app.saveDesignProcess()"></i></li>
+            </ul>
+            <div id="newItem-wrapper"></div>
+        </footer>
 
     </body>
 </html>

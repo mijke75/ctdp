@@ -14,36 +14,36 @@
     --phase-dd-deliver-80-opacity: rgba(189, 57, 47, 0.8);
 }
 
-#dd .stage.re { right: calc(86% - 185px); }
-#dd .stage.in { right: calc(62% - 170px); }
-#dd .stage.id { right: calc(38% - 155px); }
-#dd .stage.pr { right: calc(14% - 140px); }
+.stage.re { right: calc(86% - 185px); }
+.stage.in { right: calc(62% - 170px); }
+.stage.id { right: calc(38% - 155px); }
+.stage.pr { right: calc(14% - 140px); }
 
-#dd .phase {
+.phase {
     width: calc(25% - 19px);
 }
 
-#dd .phase.state-collapsed {
+.phase.state-collapsed {
     width: 75px;
 }
 
-#dd .phase.state-active {
+.phase.state-active {
     width: calc(100% - 300px);
 }
 
 
-#dd .discover { background-color: var(--phase-dd-discover); }
-#dd .define { background-color: var(--phase-dd-define); }
-#dd .develop { background-color: var(--phase-dd-develop); }
-#dd .deliver { background-color: var(--phase-dd-deliver); }
+.discover { background-color: var(--phase-dd-discover); }
+.define { background-color: var(--phase-dd-define); }
+.develop { background-color: var(--phase-dd-develop); }
+.deliver { background-color: var(--phase-dd-deliver); }
 
-#dd .discover .phase-action { color: var(--phase-dd-discover); }
-#dd .define .phase-action { color: var(--phase-dd-define); }
-#dd .develop .phase-action { color: var(--phase-dd-develop); }
-#dd .deliver .phase-action { color: var(--phase-dd-deliver); }
+.discover .phase-action { color: var(--phase-dd-discover); }
+.define .phase-action { color: var(--phase-dd-define); }
+.develop .phase-action { color: var(--phase-dd-develop); }
+.deliver .phase-action { color: var(--phase-dd-deliver); }
 
 
-#dd .discover.phase.drop-over {
+.discover.phase.drop-over {
     background: repeating-linear-gradient(
         45deg,
         var(--phase-dd-discover),
@@ -52,7 +52,7 @@
         var(--phase-dd-discover-80-opacity) 20px
     );
 }
-#dd .define.phase.drop-over {
+.define.phase.drop-over {
     background: repeating-linear-gradient(
         45deg,
         var(--phase-dd-define),
@@ -61,7 +61,7 @@
         var(--phase-dd-define-80-opacity) 20px
     );
 }
-#dd .develop.phase.drop-over {
+.develop.phase.drop-over {
     background: repeating-linear-gradient(
         45deg,
         var(--phase-dd-develop),
@@ -70,7 +70,7 @@
         var(--phase-dd-develop-80-opacity) 20px
     );
 }
-#dd .deliver.phase.drop-over {
+.deliver.phase.drop-over {
     background: repeating-linear-gradient(
         45deg,
         var(--phase-dd-deliver),
