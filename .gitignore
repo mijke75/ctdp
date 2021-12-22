@@ -3,3 +3,4 @@ _backup/
 .vscode/
 *.DS_Store
 version-0.5
+images/.DS_Store
