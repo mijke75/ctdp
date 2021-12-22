@@ -11,29 +11,46 @@ $(document).ready(function() {
     }
     else {
         loadFile('./css/methodology/' + methodology + '.css', 'css');
-        window.app = new App(methodology);
+        // TODO check for user agent
+        // TODO add isMobile class to body
+        let mobileDevice = isMobile();
+        if(mobileDevice) {
+            loadFile('./css/mobile.css', 'css');
+            $('body').addClass('mobile');
+        }
+        window.app = new App(methodology, mobileDevice);
     }
-    checkScreenWidth();
+
+    $(window).on('resize scroll', function() {
+        $('.phase').each(function() {
+            var activePhase = $(this).attr('id');
+            if ($(this).isInViewport()) {
+                $('#newItem-wrapper .newItem-' + activePhase).css('display', 'inline-block');
+            } 
+            else {
+                $('#newItem-wrapper .newItem-' + activePhase).hide();
+            }
+        });
+    });
 });
 
-function checkScreenWidth() {
-    if ($(window).width() < 1280) {
-        $('main').hide();
-        $('#fabIcon').hide();
-        $('#menu li').slice(1).hide();
-        $('#WarningScreenWidth').show();
-    }
-    else {
-        $('main').show();
-        $('#fabIcon').show();
-        $('#menu li').show();
-        $('#WarningScreenWidth').hide();
-    }
+
+
+function isMobile(){
+    return navigator.userAgent.toLowerCase().match(/mobile/i);
 }
 
-$(window).on('resize', function() {
-    checkScreenWidth();
-});
+
+
+$.fn.isInViewport = function() {
+    var elementTop = $(this).offset().top - $(window).scrollTop();
+    var elementBottom = elementTop + $(this).outerHeight();
+    var viewport = $(window).height();
+    var breakpoint = viewport / 2;
+
+    return elementTop < breakpoint && elementBottom > breakpoint && elementTop < viewport;
+};
+
 
 
 // Read a page's GET URL variables and return them as an associative array.
@@ -49,6 +66,8 @@ function getUrlVars()
     }
     return vars;
 }
+
+
 
 // Load the correct files for the chosen methodology
 function loadFile(path, type) {

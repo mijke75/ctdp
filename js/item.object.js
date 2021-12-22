@@ -193,7 +193,9 @@ export class Item {
         $.toast({
             type: 'confirm', 
             position: 'center',
-            message: 'Are you sure you want to remove this item??'
+            message: 'Are you sure you want to remove this item??',
+            cancel: 'no',
+            submit: 'yes'
         }).done(
             function() { 
                 // Remove item from parent list

@@ -3,15 +3,17 @@ import { Phases } from './phases.object.js';
 import * as options from './options.js';
 
 export class App {
-    constructor(methodologyId) {
+    constructor(methodologyId, isMobile) {
         const self = this;
 
         this.root = this;
+        this.isMobile = isMobile;
         this.options = options.default;
         
         // Version number which will be exported when design is saved
-        this.version = '0.8.11';
+        this.version = '0.10.2';
         $(this.options.versionElement).html('v.' + this.version);
+        $(this.options.versionAbout).html('version ' + this.version);
 
         this.methodology;
         if(!(methodologyId in localStorage)){
@@ -105,7 +107,9 @@ export class App {
         $.toast({
             type: 'confirm', 
             position: 'center',
-            message: 'Are you sure want to delete your design?'
+            message: 'Are you sure want to delete your design?',
+            cancel: 'no',
+            submit: 'yes'
         }).done(
             function() { 
                 self.#clear();
@@ -184,8 +188,10 @@ export class App {
             $.toast({
                 type: 'confirm', 
                 position: 'center',
-                message: 'Are you sure you want to import a design and loose your current work?'
-            }).done(
+                message: 'Are you sure you want to import a design and loose your current work?',
+                cancel: 'no',
+                submit: 'yes'
+                }).done(
                 function() { 
                     self.#load();
                 }
@@ -224,7 +230,9 @@ export class App {
                         $.toast({
                             type: 'confirm', 
                             position: 'center',
-                            message: 'The export file is made in another version(' + fileContent['version'] + ') then the current application version(' + self.version + '). Are you sure you want to import this file?'
+                            message: 'The export file is made in another version(' + fileContent['version'] + ') then the current application version(' + self.version + '). Are you sure you want to import this file?',
+                            cancel: 'no',
+                            submit: 'yes'
                         }).done(
                             function() { 
                                 self.#loadNewContent(fileContent['items']);
@@ -284,5 +292,29 @@ export class App {
     #closeModal = function(e) {
         this.aboutElement.removeClass('show');
     }    
+
+    resetItemPositions() {
+        const self = this;
+        $.toast({
+            type: 'confirm', 
+            position: 'center',
+            message: 'Are you sure want to realign all items to the top left corner?',
+            cancel: 'no',
+            submit: 'yes'
+        }).done(
+            function() { 
+                for(let p = 0; p < self.phases.list.length; p++) {
+                    let itemList = self.phases.list[p].itemList.list;
+        
+                    $.each ( itemList, function( index, item ) {
+                        item.position = {top: 10, left: 10};
+                        item.save();
+                        $('#' + item.id).css('top', '10');
+                        $('#' + item.id).css('left', '10');
+                    });
+                }
+                    }
+        );
+    }
 
 }

@@ -9,75 +9,75 @@
 }
 
 
-#edp .stage {
+.stage {
     font-size: 40px;
 }
 
-#edp .stage i {
+.stage i {
     font-size: 34px;
     line-height: 60px;
 }
 
-#edp .stage.as { right: calc(87% - 100px); }
-#edp .stage.re { right: calc(73% - 90px); }
-#edp .stage.ia { right: calc(59% - 80px); }
-#edp .stage.pl { right: calc(44% - 60px); }
-#edp .stage.cr { right: calc(30% - 50px); }
-#edp .stage.te { right: calc(16% - 50px); }
-#edp .stage.ip { right: calc(2% - 50px); }
+.stage.as { right: calc(87% - 100px); }
+.stage.re { right: calc(73% - 90px); }
+.stage.ia { right: calc(59% - 80px); }
+.stage.pl { right: calc(44% - 60px); }
+.stage.cr { right: calc(30% - 50px); }
+.stage.te { right: calc(16% - 50px); }
+.stage.ip { right: calc(2% - 50px); }
 
 
-#edp .phase {
+.phase {
     width: calc(14.2% - 10px);
 }
 
-#edp .phase.state-collapsed {
+.phase.state-collapsed {
     width: 75px;
 }
 
-#edp .phase.state-active {
+.phase.state-active {
     width: calc(100% - 525px);
 }
 
-#edp .phase footer, 
-#edp .legenda footer {
+.phase footer, 
+.legenda footer {
     height: 52px;
 }
 
-#edp .phase-action {
+.phase-action {
     font-size: 14px;
 }
 
-#edp .realisation.state-collapsed footer,
-#edp .realisation.state-active footer {
+.realisation.state-collapsed footer,
+.realisation.state-active footer {
         width: 100%;
 }
 
-#edp .evaluation.state-collapsed footer, 
-#edp .evaluation.state-active footer {
+.evaluation.state-collapsed footer, 
+.evaluation.state-active footer {
         width: 100%;
     left: 0;
 }
 
 
-#edp .ask { background-color: var(--phase-blue); }
-#edp .research { background-color: var(--phase-green); }
-#edp .imagine { background-color: var(--phase-blue); }
-#edp .plan { background-color: var(--phase-green); }
-#edp .create { background-color: var(--phase-blue); }
-#edp .test { background-color: var(--phase-green); }
-#edp .improve { background-color: var(--phase-blue); }
+.ask { background-color: var(--phase-blue); }
+.research { background-color: var(--phase-green); }
+.imagine { background-color: var(--phase-blue); }
+.plan { background-color: var(--phase-green); }
+.create { background-color: var(--phase-blue); }
+.test { background-color: var(--phase-green); }
+.improve { background-color: var(--phase-blue); }
 
-#edp .ask .phase-action { color: var(--phase-blue); }
-#edp .research .phase-action { color: var(--phase-green); }
-#edp .imagine .phase-action { color: var(--phase-blue); }
-#edp .plan .phase-action { color: var(--phase-green); }
-#edp .create .phase-action { color: var(--phase-blue); }
-#edp .test .phase-action { color: var(--phase-green); }
-#edp .improve .phase-action { color: var(--phase-blue); }
+.ask .phase-action { color: var(--phase-blue); }
+.research .phase-action { color: var(--phase-green); }
+.imagine .phase-action { color: var(--phase-blue); }
+.plan .phase-action { color: var(--phase-green); }
+.create .phase-action { color: var(--phase-blue); }
+.test .phase-action { color: var(--phase-green); }
+.improve .phase-action { color: var(--phase-blue); }
 
 
-#edp .ask.phase.drop-over {
+.ask.phase.drop-over {
     background: repeating-linear-gradient(
         45deg,
         var(--phase-blue),
@@ -86,7 +86,7 @@
         var(--phase-blue-80-opacity) 20px
     );
 }
-#edp .research.phase.drop-over {
+.research.phase.drop-over {
     background: repeating-linear-gradient(
         45deg,
         var(--phase-green),
@@ -95,7 +95,7 @@
         var(--phase-green-80-opacity) 20px
     );
 }
-#edp .imagine.phase.drop-over {
+.imagine.phase.drop-over {
     background: repeating-linear-gradient(
         45deg,
         var(--phase-blue),
@@ -104,7 +104,7 @@
         var(--phase-blue-80-opacity) 20px
     );
 }
-#edp .plan.phase.drop-over {
+.plan.phase.drop-over {
     background: repeating-linear-gradient(
         45deg,
         var(--phase-green),
@@ -113,7 +113,7 @@
         var(--phase-green-80-opacity) 20px
     );
 }
-#edp .create.phase.drop-over {
+.create.phase.drop-over {
     background: repeating-linear-gradient(
         45deg,
         var(--phase-blue),
@@ -122,7 +122,7 @@
         var(--phase-blue-80-opacity) 20px
     );
 }
-#edp .test.phase.drop-over {
+.test.phase.drop-over {
     background: repeating-linear-gradient(
         45deg,
         var(--phase-green),
@@ -131,7 +131,7 @@
         var(--phase-green-80-opacity) 20px
     );
 }
-#edp .improve.phase.drop-over {
+.improve.phase.drop-over {
     background: repeating-linear-gradient(
         45deg,
         var(--phase-blue),

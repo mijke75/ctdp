@@ -43,7 +43,7 @@ export class Phase {
     }
 
     render() {
-        let phaseElement = '<section id="' + this.id + '" class="' + this.options.phaseElements.substring(1) + ' ' + ((this.small) ? "small" : "") + ' ' + this.id + '" data-title="' + this.title + '">';
+        let phaseElement = '<section id="' + this.id + '" class="' + this.options.phaseElements.substring(1) + ' ' + ((this.small) ? "small" : "") + ' ' + ((this.root.isMobile) ? "state-active" : "") + ' ' + this.id + '" data-title="' + this.title + '">';
         phaseElement += '<header>';
         phaseElement += '<h2>' + this.title + '</h2>';
         phaseElement += '<div class="' + this.options.itemCounter.substring(1) + '" value="0">0</div>';
@@ -61,8 +61,20 @@ export class Phase {
         this.newItemElement = $('#' + this.id + ' ' + this.options.newItem);
 
         // Attach some click events to HTML elements
-        $(document).off('click', '#' + this.id).on('click', '#' + this.id, (e) => { this.toggleState(e); });
-        $(document).off('click', '#' + this.id + ' ' + this.options.newItem).on('click', '#' + this.id + ' ' + this.options.newItem, (e) => { this.newButton(e); } );
+        if(this.root.isMobile){
+            let newButton = '<div class="newItem-' + this.id + ' newItemButton"><i class="fas fa-plus"></i></div>';
+            $(newButton).appendTo($(this.options.newItemWrapper));
+
+            // Make first button visible
+            if($(this.options.newItemWrapper).html() == newButton) {
+                $(this.options.newItemWrapper + ' .newItem-' + this.id).css('display', 'inline-block');
+            }
+            $(document).off('click', this.options.newItemWrapper + ' .newItem-' + this.id).on('click', this.options.newItemWrapper + ' .newItem-' + this.id, (e) => { this.newButton(e); } );
+        }
+        else {
+            $(document).off('click', '#' + this.id).on('click', '#' + this.id, (e) => { this.toggleState(e); });
+            $(document).off('click', '#' + this.id + ' ' + this.options.newItem).on('click', '#' + this.id + ' ' + this.options.newItem, (e) => { this.newButton(e); } );
+        }
 
         this.setDroppable();
     }

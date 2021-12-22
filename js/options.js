@@ -3,6 +3,7 @@ export default
 {
     legenda: '.legenda',
     versionElement: '.legenda footer',
+    versionAbout: '#modal-about .current-version',
     phaseElements: '.phase',
     stageElements: '.stage',
     stageWrapper: '.stage-wrapper',
@@ -10,6 +11,7 @@ export default
     itemElements: '.item',
     itemCounter: '.itemCount',
     newItem: '.newItem',
+    newItemWrapper: '#newItem-wrapper',
     phaseWrapper: '.phase-wrapper',
     phaseAction: 'phase-action',
     fabIconToggle: '#fabIconCheckbox',

@@ -18,65 +18,65 @@
     --phase-evaluation-80-opacity: rgba(241, 90, 36, 0.8);
 }
 
-#ctdp .stage.i { right: calc(86% - 185px); }
-#ctdp .stage.c { right: calc(62% - 170px); }
-#ctdp .stage.d { right: calc(38% - 155px); }
-#ctdp .stage.p { right: calc(14% - 140px); }
+.stage.i { right: calc(86% - 185px); }
+.stage.c { right: calc(62% - 170px); }
+.stage.d { right: calc(38% - 155px); }
+.stage.p { right: calc(14% - 140px); }
 
 
-#ctdp .phase {
+.phase {
     width: calc(24% - 15px);
 }
 
-#ctdp .phase.small {
+.phase.small {
     width: calc(14% - 15px);
 }
 
-#ctdp .phase.state-collapsed {
+.phase.state-collapsed {
     width: 75px;
 }
 
-#ctdp .phase.state-active {
+.phase.state-active {
     width: calc(100% - 375px);
 }
 
 
-#ctdp .realisation footer {
+.realisation footer {
     width: calc(100% - 66px);
 }
 
-#ctdp .evaluation footer {
+.evaluation footer {
     width: calc(100% + 68px);
     left: -68px;
 }
 
-#ctdp .realisation.state-collapsed footer,
-#ctdp .realisation.state-active footer {
+.realisation.state-collapsed footer,
+.realisation.state-active footer {
         width: 100%;
 }
 
-#ctdp .evaluation.state-collapsed footer, 
-#ctdp .evaluation.state-active footer {
+.evaluation.state-collapsed footer, 
+.evaluation.state-active footer {
         width: 100%;
     left: 0;
 }
 
 
-#ctdp .trigger { background-color: var(--phase-trigger); }
-#ctdp .ideation { background-color: var(--phase-ideation); }
-#ctdp .design { background-color: var(--phase-design); }
-#ctdp .realisation { background-color: var(--phase-realisation); }
-#ctdp .evaluation { background-color: var(--phase-evaluation); }
+.trigger { background-color: var(--phase-trigger); }
+.ideation { background-color: var(--phase-ideation); }
+.design { background-color: var(--phase-design); }
+.realisation { background-color: var(--phase-realisation); }
+.evaluation { background-color: var(--phase-evaluation); }
 
 
-#ctdp .trigger .phase-action { color: var(--phase-trigger); }
-#ctdp .ideation .phase-action { color: var(--phase-ideation); }
-#ctdp .design .phase-action { color: var(--phase-design); }
-#ctdp .realisation .phase-action { color: var(--phase-realisation); }
-#ctdp .evaluation .phase-action { color: var(--phase-evaluation); }
+.trigger .phase-action { color: var(--phase-trigger); }
+.ideation .phase-action { color: var(--phase-ideation); }
+.design .phase-action { color: var(--phase-design); }
+.realisation .phase-action { color: var(--phase-realisation); }
+.evaluation .phase-action { color: var(--phase-evaluation); }
 
 
-#ctdp .trigger.phase.drop-over {
+.trigger.phase.drop-over {
     background: repeating-linear-gradient(
         45deg,
         var(--phase-trigger),
@@ -85,7 +85,7 @@
         var(--phase-trigger-80-opacity) 20px
     );
 }
-#ctdp .ideation.phase.drop-over {
+.ideation.phase.drop-over {
     background: repeating-linear-gradient(
         45deg,
         var(--phase-ideation),
@@ -94,7 +94,7 @@
         var(--phase-ideation-80-opacity) 20px
     );
 }
-#ctdp .design.phase.drop-over {
+.design.phase.drop-over {
     background: repeating-linear-gradient(
         45deg,
         var(--phase-design),
@@ -103,7 +103,7 @@
         var(--phase-design-80-opacity) 20px
     );
 }
-#ctdp .realisation.phase.drop-over {
+.realisation.phase.drop-over {
     background: repeating-linear-gradient(
         45deg,
         var(--phase-realisation),
@@ -112,7 +112,7 @@
         var(--phase-realisation-80-opacity) 20px
     );
 }
-#ctdp .evaluation.phase.drop-over {
+.evaluation.phase.drop-over {
     background: repeating-linear-gradient(
         45deg,
         var(--phase-evaluation),
@@ -120,4 +120,14 @@
         var(--phase-evaluation-80-opacity) 10px,
         var(--phase-evaluation-80-opacity) 20px
     );
+}
+
+
+#ctdp.mobile .legenda {
+    display: flex;
+}
+
+#ctdp.mobile .phase.state-active {
+    width: calc(100vw - 40px);
+    margin-left: 40px;
 }
