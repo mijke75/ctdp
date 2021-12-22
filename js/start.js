@@ -1,4 +1,14 @@
-$(document).ready(function() {
+$(document).ready(function() {   
+
+    if ("serviceWorker" in navigator) {
+        window.addEventListener("load", function() {
+          navigator.serviceWorker
+            .register("/service-worker.js")
+            .then(res => console.log("service worker registered"))
+            .catch(err => console.log("service worker not registered", err))
+        })
+    }
+
     $.getJSON ('../data/methodology.json', function(result) {
         $.each ( result.methodologies, function( index, methodology ) {
             let counter = 0;
@@ -15,4 +25,21 @@ $(document).ready(function() {
 
         });
     });
+
+    if (window.matchMedia('(display-mode: standalone)').matches) {  
+        // This is a PWA
+    }
+    else {
+        if(navigator.userAgent.toLowerCase().match(/mobile/i)) {
+            // This is in a mobile browser
+            if(typeof localStorage['pwa'] == 'undefined' || localStorage['pwa'] == false) {
+                alert('Please add this application to your home screen for best performances.');
+                localStorage['pwa'] = true;
+            }
+        }
+        else {
+            // This is in a desktop browser
+        }
+    }
+
 });
