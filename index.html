@@ -34,6 +34,7 @@
     </head>
 
     <body id="start">
+        <button id="installApp">Install</button>
         <header>
             Design Process Tool
         </header>
@@ -128,5 +129,26 @@
             </div>
         </main>
 
+        <script>
+            // Show install button for Chrome browsers
+            let deferredPrompt;
+
+            const installApp = document.getElementById('installApp');
+
+            window.addEventListener('beforeinstallprompt', (e) => {
+                deferredPrompt = e;
+                installApp.style.visibility = 'visible';
+            });
+
+            installApp.addEventListener('click', async () => {
+                if (deferredPrompt !== null) {
+                    deferredPrompt.prompt();
+                    const { outcome } = await deferredPrompt.userChoice;
+                    if (outcome === 'accepted') {
+                        deferredPrompt = null;
+                    }
+                }
+            });
+        </script>
     </body>
  </html>

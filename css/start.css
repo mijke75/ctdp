@@ -1,5 +1,24 @@
+#installApp {
+    visibility: hidden;
+    z-index: 2;
+    position: absolute;
+    top: 40px;
+    right: 30px;
+    width: 110px;
+    height: 42px;
+    border: solid 1px var(--white);
+    background-color: var(--red);
+    font-size: 14px;
+    color: var(--white);
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+}
 
 #start header {
+    z-index: 1;
     position: absolute;
     width: 100vw;
     padding: 40px 25px;
