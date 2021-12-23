@@ -11,7 +11,7 @@ export class App {
         this.options = options.default;
         
         // Version number which will be exported when design is saved
-        this.version = '0.10.4';
+        this.version = '0.10.5';
         $(this.options.versionElement).html('v.' + this.version);
         $(this.options.versionAbout).html('version ' + this.version);
 
@@ -298,7 +298,7 @@ export class App {
         $.toast({
             type: 'confirm', 
             position: 'center',
-            message: 'Are you sure want to realign all items to the top left corner?',
+            message: 'Are you sure want to realign all items to the top left corner?<br>(usefull when items are outside the phase canvas.)',
             cancel: 'no',
             submit: 'yes'
         }).done(
@@ -313,7 +313,12 @@ export class App {
                         $('#' + item.id).css('left', '10');
                     });
                 }
-                    }
+                self.closeFabIcon();
+            }
+        ).fail(
+            function() {
+                self.closeFabIcon();
+            }
         );
     }
 
