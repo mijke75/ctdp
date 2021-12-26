@@ -128,8 +128,27 @@ export class Modal {
                 allRequired = false;
             }
         });
+
+        var urls = $('input').filter('[type=url]');
+        urls.each(function(){
+            if( $(this).val() != '' && !self.#validURL( $(this).val() ) ) {
+                self.#invalidFields.push($(this).attr('id'));
+                allRequired = false;
+            }
+        });
+
         return allRequired;
     }
+
+    #validURL(str) {
+        var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
+          '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
+          '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+          '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+          '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+          '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
+        return !!pattern.test(str);
+      }
 
 
     // Get all the values from the Item element we're working with and update the form fields 
