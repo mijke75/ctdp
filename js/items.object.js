@@ -70,7 +70,7 @@ export class Items {
         const modal = new Modal(this.root, this.parent, item);
 
         modal.addEventListener('submit', (item) => {
-            this.list[item.id] = JSON.stringify(item);
+            this.list[item.id] = item;
             this.triggerEvent('newItem', [item]);
         });
     }
