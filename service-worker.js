@@ -1,4 +1,4 @@
-const version = "0.10.5";
+const version = "0.10.12";
 const designProcessTool = "dpt-v" + version;
 const assets = [
   "/",

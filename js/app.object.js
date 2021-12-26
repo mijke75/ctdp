@@ -3,15 +3,15 @@ import { Phases } from './phases.object.js';
 import * as options from './options.js';
 
 export class App {
-    constructor(methodologyId, isMobile) {
+    constructor(methodologyId, smallDevice) {
         const self = this;
 
         this.root = this;
-        this.isMobile = isMobile;
+        this.smallDevice = smallDevice;
         this.options = options.default;
         
         // Version number which will be exported when design is saved
-        this.version = '0.10.5';
+        this.version = '0.10.12';
         $(this.options.versionElement).html('v.' + this.version);
         $(this.options.versionAbout).html('version ' + this.version);
 

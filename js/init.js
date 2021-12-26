@@ -2,8 +2,20 @@ import { App } from './app.object.js';
 
 window.app;
 
+// Width of screen to change to small device layout (don't forget to update mobile.css as well)
+let smallDeviceWidth = 1024;
+
 // Create app object and initiate all phases 
 $(document).ready(function() {
+    // Check for mobile device
+    let smallDevice = isSmallDevice(smallDeviceWidth);
+    let screenWidth = $(window).innerWidth();
+
+    // For devices with width smaller than 600px mark as mobile
+    if(screenWidth < smallDeviceWidth) {
+        $('body').addClass('mobile');
+    }
+
     // Check if we know which methodology we are supposed to use.
     let methodology = getUrlVars()['methodology'];
     if(typeof methodology == 'undefined') {
@@ -11,17 +23,11 @@ $(document).ready(function() {
     }
     else {
         loadFile('./css/methodology/' + methodology + '.css', 'css');
-        // TODO check for user agent
-        // TODO add isMobile class to body
-        let mobileDevice = isMobile();
-        if(mobileDevice) {
-            loadFile('./css/mobile.css', 'css');
-            $('body').addClass('mobile');
-        }
-        window.app = new App(methodology, mobileDevice);
+
+        window.app = new App(methodology, smallDevice);
     }
 
-    $(window).on('resize scroll', function() {
+    $('.phase-container').on('scroll', (e) => { 
         $('.phase').each(function() {
             var activePhase = $(this).attr('id');
             if ($(this).isInViewport()) {
@@ -32,12 +38,40 @@ $(document).ready(function() {
             }
         });
     });
+
+    $(window).on('resize', function() {
+        // Check if size switches between mobile and desktop size
+        if( (screenWidth > smallDeviceWidth && $(window).innerWidth() < smallDeviceWidth) || 
+            (screenWidth < smallDeviceWidth && $(window).innerWidth() > smallDeviceWidth) ) {
+
+            $('body').toggleClass('mobile');
+
+            smallDevice = $('body').hasClass('mobile')
+            window.app.smallDevice = smallDevice;
+
+            $.each ( window.app.phases.list, function( index, phase ) {
+                phase.toggleMobileDesktop();
+            });
+            screenWidth = $(window).innerWidth();
+        }
+    });
 });
 
-
-
-function isMobile(){
-    return navigator.userAgent.toLowerCase().match(/mobile/i);
+function isSmallDevice(maxWidth = 0){
+    let userAgent = navigator.userAgent.toLowerCase().match(/mobile/i);
+    if(userAgent == null) {
+        // check for screenWidth
+        if($(window).innerWidth() < maxWidth) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    else {
+        return userAgent;
+    }
+    // return navigator.userAgent.toLowerCase().match(/mobile/i);
 }
 
 

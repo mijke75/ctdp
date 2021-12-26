@@ -174,7 +174,7 @@
 
 
 
-/* On screens that are 600px or less, set the background color to olive */
+/* For screens that are 600px or less */
 @media screen and (max-width: 600px) {
     #start header {
         font-size: 24px;

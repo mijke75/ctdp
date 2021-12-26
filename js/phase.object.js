@@ -42,8 +42,31 @@ export class Phase {
         this.itemList.loadItems(this.id);
     }
 
+    toggleMobileDesktop() {
+        if(this.root.smallDevice) {
+            // Set phaseElement full screen
+            $('#' + this.id).addClass('state-active');
+            $('#' + this.id).removeClass('state-collapsed');
+
+            // Set the correct event handler for new Item
+            $(document).off('click', '#' + this.id);
+            $(document).off('click', '#' + this.id + ' ' + this.options.newItem);
+            $(document).off('click', this.options.newItemWrapper + ' .newItem-' + this.id).on('click', this.options.newItemWrapper + ' .newItem-' + this.id, (e) => { this.newButton(e); } );
+        }
+        else {
+            // Set phaseElement as accordion
+            $('#' + this.id).removeClass('state-active');
+            $('#' + this.id).removeClass('state-collapsed');
+
+            // Set the correct event handler for new Item
+            $(document).off('click', '#' + this.id).on('click', '#' + this.id, (e) => { this.toggleState(e); });
+            $(document).off('click', '#' + this.id + ' ' + this.options.newItem).on('click', '#' + this.id + ' ' + this.options.newItem, (e) => { this.newButton(e); } );
+            $(document).off('click', this.options.newItemWrapper + ' .newItem-' + this.id);
+        }
+    }
+
     render() {
-        let phaseElement = '<section id="' + this.id + '" class="' + this.options.phaseElements.substring(1) + ' ' + ((this.small) ? "small" : "") + ' ' + ((this.root.isMobile) ? "state-active" : "") + ' ' + this.id + '" data-title="' + this.title + '">';
+        let phaseElement = '<section id="' + this.id + '" class="' + this.options.phaseElements.substring(1) + ' ' + ((this.small) ? "small" : "") + ' ' + ((this.root.smallDevice) ? "state-active" : "") + ' ' + this.id + '" data-title="' + this.title + '">';
         phaseElement += '<header>';
         phaseElement += '<h2>' + this.title + '</h2>';
         phaseElement += '<div class="' + this.options.itemCounter.substring(1) + '" value="0">0</div>';
@@ -60,15 +83,17 @@ export class Phase {
         this.countElement = $('#' + this.id + ' ' + this.options.itemCounter);
         this.newItemElement = $('#' + this.id + ' ' + this.options.newItem);
 
-        // Attach some click events to HTML elements
-        if(this.root.isMobile){
-            let newButton = '<div class="newItem-' + this.id + ' newItemButton"><i class="fas fa-plus"></i></div>';
-            $(newButton).appendTo($(this.options.newItemWrapper));
+        // Attach newButton to HTML element
+        let newButton = '<div class="newItem-' + this.id + ' newItemButton"><i class="fas fa-plus"></i></div>';
+        $(newButton).appendTo($(this.options.newItemWrapper));
 
-            // Make first button visible
-            if($(this.options.newItemWrapper).html() == newButton) {
-                $(this.options.newItemWrapper + ' .newItem-' + this.id).css('display', 'inline-block');
-            }
+        // Make first button visible
+        if($(this.options.newItemWrapper).html() == newButton) {
+            $(this.options.newItemWrapper + ' .newItem-' + this.id).css('display', 'inline-block');
+        }
+
+        // Set the right new Item click event
+        if(this.root.smallDevice){
             $(document).off('click', this.options.newItemWrapper + ' .newItem-' + this.id).on('click', this.options.newItemWrapper + ' .newItem-' + this.id, (e) => { this.newButton(e); } );
         }
         else {
