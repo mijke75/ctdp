@@ -23,6 +23,7 @@ $(document).ready(function() {
     }
     else {
         loadFile('./css/methodology/' + methodology + '.css', 'css');
+        loadFile('./css/mobile.css', 'css');
 
         window.app = new App(methodology, smallDevice);
     }

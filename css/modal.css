@@ -163,6 +163,7 @@
     -moz-appearance: none;
     appearance: none;
     background: url(../images/select.png) bottom right no-repeat transparent;
+    color: var(--black);
     background-position: 100% 60%;
 }
 
