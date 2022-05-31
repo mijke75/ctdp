@@ -344,6 +344,8 @@ export class App {
     toggleDatabase() {
         let newSetting = (typeof(localStorage['db']) == 'undefined' || localStorage['db'] == 'local') ? 'online': 'local';
         this.setDb(newSetting);
+        this.closeFabIcon();
+        // Todo refresh canvas
     }
 
 }
