@@ -9,6 +9,7 @@ $(document).ready(function() {
         })
     }
 
+
     $.getJSON ('../data/methodology.json', function(result) {
         $.each ( result.methodologies, function( index, methodology ) {
             let counter = 0;

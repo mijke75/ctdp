@@ -1,4 +1,4 @@
-const version = "0.10.15";
+const version = "0.11.03";
 const designProcessTool = "dpt-v" + version;
 const assets = [
   "/",
@@ -33,6 +33,7 @@ const assets = [
   "/images/methodology/hcd.png",
   "/images/select.png",
   "/js/app.object.js",
+  "js/db.localstorage.js",
   "/js/init.js",
   "/js/item.object.js",
   "/js/items.object.js",

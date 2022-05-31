@@ -1,6 +1,8 @@
 import { Stages } from './stages.object.js';
 import { Phases } from './phases.object.js';
 import * as options from './options.js';
+import { DbLocalStorage } from './db.localstorage.js';
+import { DbOnlineStorage } from './db.onlinestorage.js';
 
 export class App {
     constructor(methodologyId, smallDevice) {
@@ -11,14 +13,13 @@ export class App {
         this.options = options.default;
         
         // Version number which will be exported when design is saved
-        this.version = '0.10.15';
+        this.version = '0.11.03';
         $(this.options.versionElement).html('v.' + this.version);
         $(this.options.versionAbout).html('version ' + this.version);
 
         this.methodology;
-        if(!(methodologyId in localStorage)){
-            localStorage.setItem(methodologyId,'{}');            
-        }
+        this.setDb();
+        this.db.initMethodology(methodologyId);
 
         $.getJSON ('../data/methodology.json', function(result) {
             $.each ( result.methodologies, function( index, obj ) {
@@ -119,7 +120,7 @@ export class App {
 
     // Private function to clear the design
     #clear() {
-        delete localStorage[this.methodology.id];
+        this.db.deleteMethodology(this.methodology.id);
         $(this.options.itemElements).remove();
         $(this.options.itemCounter).attr('value', 0);
         $(this.options.itemCounter).html(0);
@@ -127,7 +128,7 @@ export class App {
     }
 
     saveDesignProcess() {
-        if (typeof localStorage[this.methodology.id] == 'undefined' || localStorage[this.methodology.id] == '{}') {
+        if (this.db.isMethodologyEmpty(this.methodology.id)) {
             $.toast({
                 type: 'warning', 
                 position: 'center',
@@ -138,7 +139,8 @@ export class App {
         }
         else {
             // Save the version number and valid is true to check with import
-            let text = '{ "valid": "true", "version": "' + this.version + '", "methodology": "' + this.methodology.id + '", "items": ' + localStorage[this.methodology.id] + ' }';
+            let items = this.db.loadItems(this.methodology.id);
+            let text = '{ "valid": "true", "version": "' + this.version + '", "methodology": "' + this.methodology.id + '", "items": ' + JSON.stringify(items) + ' }';
             let filename = 'export-' + this.#today() + '.' + this.methodology.id;
             this.#download(filename, text, this.options.fabSaveElement);
         }    
@@ -180,8 +182,8 @@ export class App {
         const self = this;
         let allowed = false;
         // Check if we have an empty design
-        if (typeof localStorage[this.methodology.id] == 'undefined' || localStorage[this.methodology.id] == '{}') {
-            this.#load();
+        if (this.db.isMethodologyEmpty(this.methodology.id)) {
+                this.#load();
         }
         else {
             // Check if the user wants to overwrite the current design
@@ -240,11 +242,6 @@ export class App {
                         );
                     }
                 }
-                // BACKWARD COMPATIBILITY v0.5 *****************************************************
-                else if (fileContent['valid'] == 'true' && fileContent['version'] == '0.5' ) {
-                    self.#loadNewContent(fileContent['items']);
-                }
-                // BACKWARD COMPATIBILITY v0.5 *****************************************************
                 else {
                     $.toast({
                         type: 'warning', 
@@ -267,7 +264,7 @@ export class App {
         // Clear the current design
         this.#clear();
         // Save the items from the export file to the local storage
-        localStorage[this.methodology.id] = JSON.stringify(fileContent);
+        this.db.saveItems(this.methodology.id, fileContent);
         // reset the screen with the imported items
 
         // We need to loadItems in each phase
@@ -320,6 +317,33 @@ export class App {
                 self.closeFabIcon();
             }
         );
+    }
+
+    setDb(setting) {
+        let db = localStorage['db'] || 'local';
+        if(typeof(setting) != 'undefined') {
+            db = setting;
+        }
+
+        if(db == 'online') {
+            this.db = new DbOnlineStorage();
+        }
+        else {
+            this.db = new DbLocalStorage();
+        }
+
+        let oldIcon = (db == 'local') ? 'on': 'off';
+        let newIcon = (db == 'local') ? 'off': 'on';
+
+        $(this.options.fabDatabaseToggle).removeClass('fa-toggle-' + oldIcon);
+        $(this.options.fabDatabaseToggle).addClass('fa-toggle-' + newIcon);
+
+        localStorage['db'] = db;
+    }
+
+    toggleDatabase() {
+        let newSetting = (typeof(localStorage['db']) == 'undefined' || localStorage['db'] == 'local') ? 'online': 'local';
+        this.setDb(newSetting);
     }
 
 }

@@ -31,29 +31,12 @@ export class Items {
         let counter = 0;
         this.list = {};
 
-        // BACKWARD COMPATIBILITY v0.5 *****************************************************
-        // const storageList = JSON.parse(localStorage[this.root.methodology.id] || "{}");
-        // BACKWARD COMPATIBILITY v0.5 *****************************************************
+        let items = this.root.db.loadItems(this.root.methodology.id);
 
-        // BACKWARD COMPATIBILITY v0.5 *****************************************************
-        let storageList = JSON.parse(localStorage[this.root.methodology.id] || "{}");
-
-        // There is a design process on-going from version 0.5 (which uses items in LocalStorage)
-        if(this.root.methodology.id == 'ctdp' && 
-            typeof localStorage['items'] != 'undefined' && 
-            (typeof localStorage[this.root.methodology.id] == 'undefined' ||
-             localStorage[this.root.methodology.id] == '{}') ) 
-        {
-            storageList = JSON.parse(localStorage['items'] || "{}");
-            localStorage[this.root.methodology.id] = localStorage['items'] ;
-            delete localStorage['items'];
-        }
-        // BACKWARD COMPATIBILITY v0.5 *****************************************************
-
-        for (let id in storageList) {
-            if (!storageList.hasOwnProperty(id)) continue;
-            let listitem = storageList[id];
-            if (storageList[id].phase == phaseId) {
+        for (let id in items) {
+            if (!items.hasOwnProperty(id)) continue;
+            let listitem = items[id];
+            if (items[id].phase == phaseId) {
                 let item = new Item(this);
                 item.load(id);
                 this.list[item.id] = item;

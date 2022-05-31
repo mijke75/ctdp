@@ -45,7 +45,7 @@ export class Item {
         }
     }
 
-    // We use getter setter for parent and root, because we dont want the parent in the localStorage
+    // We use getter setter for parent and root, because we dont want the parent in the ocalStorage
     //      (JSON.stringify will fail in items.object.js/newItem eventListener)
     get parent() {
         return this.#parent;
@@ -62,8 +62,7 @@ export class Item {
 
     // We can load an Item by its id directly from the local storage
     load(id) {
-        let items = JSON.parse(localStorage[this.#root.methodology.id] || "{}");
-        let item = items[id];
+        let item = this.#root.db.loadItem(this.#root.methodology.id, id);
 
         this.id = item.id;
         this.title = item.title;
@@ -108,7 +107,7 @@ export class Item {
             },
             // If we drop a draggable Item take care of its HTML and storage
             stop: function( event, ui ) {
-                let items = JSON.parse(localStorage[self.root.methodology.id] || "{}");
+                let items = self.root.db.loadItems(self.root.methodology.id);
 
                 // The Item has been moved to another phase, let's take care of the HTML and local Storage
                 if(self.phase != ui.helper.attr('data-phase')) {
@@ -126,7 +125,7 @@ export class Item {
                     self.position = ui.position;
                 }
                 items[self.id].position = self.position;
-                localStorage[self.root.methodology.id] = JSON.stringify(items);
+                self.root.db.saveItems(self.root.methodology.id, items);
             }
         });
         // Always attach the click event after making it draggable, so it won't fire during dragging the Item
@@ -168,7 +167,8 @@ export class Item {
         }
 
         // Next we have to save it in the local storage
-        let items = JSON.parse(localStorage[this.#root.methodology.id] || "{}");
+        let items = this.root.db.loadItems(this.root.methodology.id);
+
         items[this.id] = {
             id: this.id, 
             title: this.title, 
@@ -182,7 +182,7 @@ export class Item {
             position: this.position
         };
 
-        localStorage[this.#root.methodology.id] = JSON.stringify(items);
+        this.#root.db.saveItems(this.#root.methodology.id, items);
         return items[this.id];
     }
 
@@ -201,10 +201,7 @@ export class Item {
                 // Remove item from parent list
                 self.#parent.removeItem(self.id);
 
-                // remove item from storage
-                let items = JSON.parse(localStorage[self.#root.methodology.id] || "{}");
-                delete items[self.id];
-                localStorage[self.#root.methodology.id] = JSON.stringify(items);
+                self.#root.db.deleteItem(self.#root.methodology.id, self.id);
 
                 // remove item from screen
                 $('#' + self.id).remove();

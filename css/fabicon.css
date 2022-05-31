@@ -23,15 +23,15 @@
     background: var(--red);
 }
 
-.fabReset, .fabDelete, .fabLoad, .fabSave {
+.fabDatabase, .fabReset, .fabDelete, .fabLoad, .fabSave {
     position: absolute;
-    bottom: 65px;
+    bottom: 67px;
     right: 35px;
     z-index: 21;
     transition: all .2s cubic-bezier(.76,.28,.49,.45);
 }
 
-.fabReset i, .fabDelete i, .fabLoad i, .fabSave i {
+.fabDatabase i, .fabReset i, .fabDelete i, .fabLoad i, .fabSave i {
     font-size: 25px;
     padding: 15px;
     border-radius: 50%;
@@ -51,21 +51,26 @@
     transform: rotateZ(-90deg);
 }
 
-#fabIconCheckbox:checked~.fabReset {
+#fabIconCheckbox:checked~.fabDatabase {
     transform: translateY(-80px);
 }
 
-#fabIconCheckbox:checked~.fabDelete {
+#fabIconCheckbox:checked~.fabReset {
     transform: translateY(-145px);
     transition-delay: 20ms;
+}
+
+#fabIconCheckbox:checked~.fabDelete {
+    transform: translateY(-210px);
+    transition-delay: 40ms;
 } 
 
 #fabIconCheckbox:checked~.fabLoad {
-    transform: translateY(-210px);
-    transition-delay: 40ms;
+    transform: translateY(-275px);
+    transition-delay: 60ms;
 }
 
 #fabIconCheckbox:checked~.fabSave {
-    transform: translateY(-275px);
-    transition-delay: 60ms;
+    transform: translateY(-340px);
+    transition-delay: 80ms;
 }

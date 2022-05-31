@@ -15,6 +15,7 @@ export default
     phaseWrapper: '.phase-wrapper',
     phaseAction: 'phase-action',
     fabIconToggle: '#fabIconCheckbox',
+    fabDatabaseToggle: '#fabDatabaseToggle',
     fabSaveElement: 'fabSaveDP',
     fabLoadElement: '#fabLoadDP',
     menuToggle: '#menuToggleCheckbox',
